@@ -5,6 +5,7 @@ metadata:
   name: kubernetesclusterstorage
 spec:
   folder: "Kubernetes"
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -2562,6 +2563,6 @@ spec:
       "timezone": "",
       "title": "Kubernetes Storage Volumes (Cluster)",
       "uid": "feAoiE84k",
-      "version": 2,
+      "version": 1,
       "weekStart": ""
     }

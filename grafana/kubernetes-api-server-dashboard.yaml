@@ -5,6 +5,7 @@ metadata:
   name: kubernetesapiserver
 spec:
   folder: "Kubernetes"
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -787,6 +788,6 @@ spec:
       "timezone": "",
       "title": "Kubernetes API Server Performance",
       "uid": "R6abPf9Zz",
-      "version": 10,
+      "version": 1,
       "weekStart": ""
     }
