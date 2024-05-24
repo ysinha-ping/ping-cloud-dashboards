@@ -5,6 +5,7 @@ metadata:
   name: pftopology
 spec:
   folder: "Ping"
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -143,7 +144,7 @@ spec:
                   "type": "count"
                 }
               ],
-              "query": "event: SSO AND status: failure AND role: IdP AND NOT connectionId: healthcheckconnection AND cluster_name: $cluster_name",
+              "query": "event: SSO AND status: failure AND role: IdP AND NOT connectionId: healthcheckconnection AND cluster_name: \"$cluster_name\"",
               "queryType": "lucene",
               "refId": "A",
               "timeField": "@timestamp"
@@ -256,7 +257,7 @@ spec:
                   "type": "count"
                 }
               ],
-              "query": "event: SSO AND status: success AND role: IdP AND NOT connectionId: healthcheckconnection AND cluster_name: $cluster_name",
+              "query": "event: SSO AND status: success AND role: IdP AND NOT connectionId: healthcheckconnection AND cluster_name: \"$cluster_name\"",
               "queryType": "lucene",
               "refId": "A",
               "timeField": "@timestamp"
@@ -369,7 +370,7 @@ spec:
                   "type": "count"
                 }
               ],
-              "query": "(event: AUTHN_ATTEMPT AND status: failure AND NOT connectionId: healthcheckconnection AND cluster_name: $cluster_name) OR (status:inprogress AND event:AUTHN_ATTEMPT AND subject:* AND NOT connectionId: healthcheckconnection AND cluster_name: $cluster_name)",
+              "query": "(event: AUTHN_ATTEMPT AND status: failure AND NOT connectionId: healthcheckconnection AND cluster_name: \"$cluster_name\") OR (status:inprogress AND event:AUTHN_ATTEMPT AND subject:* AND NOT connectionId: healthcheckconnection AND cluster_name: \"$cluster_name\")",
               "queryType": "lucene",
               "refId": "A",
               "timeField": "@timestamp"
@@ -482,7 +483,7 @@ spec:
                   "type": "count"
                 }
               ],
-              "query": "event: AUTHN_ATTEMPT AND NOT connectionId: healthcheckconnection AND cluster_name: $cluster_name",
+              "query": "event: AUTHN_ATTEMPT AND NOT connectionId: healthcheckconnection AND cluster_name: \"$cluster_name\"",
               "queryType": "lucene",
               "refId": "A",
               "timeField": "@timestamp"
@@ -595,7 +596,7 @@ spec:
                   "type": "count"
                 }
               ],
-              "query": "kubernetes.container_name: pingfederate-admin AND NOT clientIp: \"0:0:0:0:0:0:0:1\" AND NOT clientIp: 127.0.0.1 AND NOT connectionId: healthcheckconnection AND cluster_name: $cluster_name",
+              "query": "kubernetes.container_name: pingfederate-admin AND NOT clientIp: \"0:0:0:0:0:0:0:1\" AND NOT clientIp: 127.0.0.1 AND NOT connectionId: healthcheckconnection AND cluster_name: \"$cluster_name\"",
               "queryType": "lucene",
               "refId": "A",
               "timeField": "@timestamp"
@@ -660,6 +661,6 @@ spec:
       "timezone": "",
       "title": "PingFederate Topology Dashboard",
       "uid": "dN1PasBMk",
-      "version": 84,
+      "version": 1,
       "weekStart": ""
     }

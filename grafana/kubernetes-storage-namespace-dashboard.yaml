@@ -5,6 +5,7 @@ metadata:
   name: kubernetesstoragenamespace
 spec:
   folder: "Kubernetes"
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -2283,6 +2284,6 @@ spec:
       "timezone": "",
       "title": "Kubernetes Storage Volumes (Namespace)",
       "uid": "Gg1oiE8Vz",
-      "version": 2,
+      "version": 1,
       "weekStart": ""
     }
