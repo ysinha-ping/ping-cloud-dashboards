@@ -5,6 +5,7 @@ metadata:
   name: logging
 spec:
   folder: "Monitoring"
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -665,6 +666,6 @@ spec:
       "timezone": "",
       "title": "Logging metrics",
       "uid": "5RHno_aVz",
-      "version": 4,
+      "version": 1,
       "weekStart": ""
     }

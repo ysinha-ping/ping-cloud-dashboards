@@ -15,6 +15,12 @@
 - Add Karpenter capacity and performance Grafana dashboard
 - Add new metric for Kubernetes API Server Performance dashboard
 - Fix P1AS Ingress Dashboard
+- Add volume-autoscaler dashboard
+- Upgrade grafana-operator, grafana-folders
+- Fix wrong field in on ‘Ping Access Full System Logs' graph ‘Ping Access dashboard’
+- Fix ingress label selector on the "PingOne Advanced Services Ingress Usage" dashboard
+- Fix karpeneter dashboard
+- Fix Grafana PA/PF Topology Dashboard
 
 _Changes_
 
@@ -32,6 +38,13 @@ _Changes_
 - [X] PDO-5923 Karpenter capacity and performance Grafana dashboard
 - [X] PDO-6091 Add new metric for Kubernetes API Server Performance dashboard
 - [X] PDO-6231 Fix P1AS Ingress Dashboard
+- [X] PDO-6334 Kubernetes-Volume-Autoscaler: create the Grafana Dashboard
+- [X] PDO-6560 Upgrade grafana-operator, grafana-folders
+- [X] PDO-6676 Identify and map numeric fields in Elastic
+- [X] PDO-6872 Fix wrong field in on Ping Access dashboard
+- [X] PDO-6869 Fix karpeneter dashboard
+- [X] PDO-7076 Fix ingress label selector
+- [X] PDO-7081 Grafana PA/PF Topology Dashboard
 
 ### 1.18.0.0
 - Refactor 'Grafana PingFederate Topology Dashboard' queries to exclude healcheckconnection information from them

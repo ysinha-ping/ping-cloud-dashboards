@@ -5,6 +5,7 @@ metadata:
   name: kubernetesclusterautoscaler
 spec:
   folder: "Kubernetes"
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -1098,6 +1099,6 @@ spec:
       "timezone": "browser",
       "title": "Kubernetes Cluster Autoscaler Stats",
       "uid": "qLaYXlDZk",
-      "version": 2,
+      "version": 1,
       "weekStart": ""
     }
