@@ -21,6 +21,9 @@
 - Fix ingress label selector on the "PingOne Advanced Services Ingress Usage" dashboard
 - Fix karpeneter dashboard
 - Fix Grafana PA/PF Topology Dashboard
+- Fix Grafana CPU and Memory usage dashboard
+- Grafana remove duplicate graphs
+- Add 'source cluster' identifier to graphs legend for Volume Autoscaler dashboard
 - Fix Grafana 'No data' message on 'ETCD DB Size' graph
 
 _Changes_
@@ -46,6 +49,8 @@ _Changes_
 - [X] PDO-6869 Fix karpeneter dashboard
 - [X] PDO-7076 Fix ingress label selector
 - [X] PDO-7081 Grafana PA/PF Topology Dashboard
+- [X] PDO-7568 Grafana remove duplicate graphs
+- [X] PDO-7548 Add cluster name for Volume Autoscaler dashboard
 - [X] PDO-7559 Grafana fix 'No data' message on 'ETCD DB Size' graph
 
 ### 1.18.0.0

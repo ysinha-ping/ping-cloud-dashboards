@@ -30,6 +30,7 @@ spec:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
+      "id": 15,
       "links": [],
       "liveNow": true,
       "panels": [
@@ -117,9 +118,9 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "max(volume_autoscaler_num_valid_pvcs{k8s_cluster_name=~\"$cluster_name\"}) by (instance)",
+              "expr": "max(volume_autoscaler_num_valid_pvcs{k8s_cluster_name=~\"$cluster_name\"}) by (instance, k8s_cluster_name, k8s_cluster_region)",
               "instant": false,
-              "legendFormat": "PVCs",
+              "legendFormat": "PVCs {{ k8s_cluster_region }}",
               "range": true,
               "refId": "A"
             },
@@ -129,10 +130,10 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "max(volume_autoscaler_num_pvcs_above_threshold{k8s_cluster_name=~\"$cluster_name\"}) by (instance)",
+              "expr": "max(volume_autoscaler_num_pvcs_above_threshold{k8s_cluster_name=~\"$cluster_name\"}) by (instance, k8s_cluster_name, k8s_cluster_region)",
               "hide": false,
               "instant": false,
-              "legendFormat": "PVCs need to be scaled",
+              "legendFormat": "PVCs need to be scaled {{ k8s_cluster_region }}",
               "range": true,
               "refId": "B"
             }
@@ -226,7 +227,7 @@ spec:
               "format": "time_series",
               "hide": false,
               "instant": false,
-              "legendFormat": "Attempted",
+              "legendFormat": "Attempted {{ k8s_cluster_region }}",
               "range": true,
               "refId": "A"
             },
@@ -241,7 +242,7 @@ spec:
               "format": "time_series",
               "hide": false,
               "instant": false,
-              "legendFormat": "Failed",
+              "legendFormat": "Failed {{ k8s_cluster_region }}",
               "range": true,
               "refId": "B"
             },
@@ -255,7 +256,7 @@ spec:
               "format": "time_series",
               "hide": false,
               "instant": false,
-              "legendFormat": "Successful",
+              "legendFormat": "Successful {{ k8s_cluster_region }}",
               "range": true,
               "refId": "C"
             }
@@ -291,9 +292,9 @@ spec:
             "overrides": []
           },
           "gridPos": {
-            "h": 4,
-            "w": 2,
-            "x": 18,
+            "h": 9,
+            "w": 6,
+            "x": 16,
             "y": 0
           },
           "id": 2,
@@ -321,7 +322,7 @@ spec:
               "editorMode": "code",
               "expr": "volume_autoscaler_release_info{k8s_cluster_name=~\"$cluster_name\"}",
               "instant": false,
-              "legendFormat": "{{version}}",
+              "legendFormat": "{{ k8s_cluster_region }} - {{version}}",
               "range": true,
               "refId": "A"
             }

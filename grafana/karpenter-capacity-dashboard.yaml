@@ -33,7 +33,7 @@ spec:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 2,
-      "id": 9,
+      "id": 24,
       "links": [],
       "liveNow": true,
       "panels": [
@@ -668,7 +668,7 @@ spec:
                   "instance": "",
                   "instance 1": "",
                   "job": "",
-                  "k8s_cluster_name 1": "Cluster Name",
+                  "k8s_cluster_name 1": "Cluster Namw",
                   "kubernetes_namespace 1": "",
                   "nodepool": "Nodepool"
                 }
@@ -795,8 +795,7 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -845,8 +844,7 @@ spec:
                       "mode": "percentage",
                       "steps": [
                         {
-                          "color": "green",
-                          "value": null
+                          "color": "green"
                         },
                         {
                           "color": "red",
@@ -943,7 +941,7 @@ spec:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "karpenter_nodes_total_daemon_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\", k8s_cluster_name=~\"$cluster_name\"} + \nkarpenter_nodes_total_pod_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\", k8s_cluster_name=~\"$cluster_name\"}",
+              "expr": "karpenter_nodes_total_daemon_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\"} + \nkarpenter_nodes_total_pod_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\"}",
               "format": "table",
               "hide": false,
               "instant": true,
