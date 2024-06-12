@@ -1,5 +1,13 @@
 # Changelog
 
+### 2.0.0.0
+
+- Fix Grafana cluster autoscaler dashboard
+
+_Changes_
+
+- [X] PDO-7517 Cluster name filter is absent for 'Number of unscheduled pods' graph
+
 ### 1.19.0.0
 
 - Created Grafana Dashboard to visualize Kubernetes volumes metrics
