@@ -49,10 +49,9 @@ _Changes_
 - [X] PDO-6869 Fix karpeneter dashboard
 - [X] PDO-7076 Fix ingress label selector
 - [X] PDO-7081 Grafana PA/PF Topology Dashboard
+- [X] PDO-7568 Grafana remove duplicate graphs
 - [X] PDO-7548 Add cluster name for Volume Autoscaler dashboard
 - [X] PDO-7559 Grafana fix 'No data' message on 'ETCD DB Size' graph
-- [X] PDO-7567 Grafana fix empty container metrics
-- [X] PDO-7568 Grafana remove duplicate graphs
 
 ### 1.18.0.0
 - Refactor 'Grafana PingFederate Topology Dashboard' queries to exclude healcheckconnection information from them
