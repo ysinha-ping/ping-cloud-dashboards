@@ -38,7 +38,7 @@ spec:
       "fiscalYearStartMonth": 0,
       "gnetId": 12623,
       "graphTooltip": 0,
-      "id": 18,
+      "id": 20,
       "links": [],
       "liveNow": false,
       "panels": [
@@ -220,21 +220,21 @@ spec:
               "mappings": [
                 {
                   "options": {
-                    "0": {
+                    "1": {
                       "index": 0,
-                      "text": "No"
+                      "text": "Yes"
                     }
                   },
                   "type": "value"
                 },
                 {
                   "options": {
-                    "from": 1,
+                    "from": 0,
                     "result": {
                       "index": 1,
-                      "text": "Yes"
+                      "text": "No"
                     },
-                    "to": 10
+                    "to": 1
                   },
                   "type": "range"
                 }
@@ -247,11 +247,7 @@ spec:
                     "value": null
                   },
                   {
-                    "color": "rgba(237, 129, 40, 0.89)",
-                    "value": 0
-                  },
-                  {
-                    "color": "rgba(50, 172, 45, 0.97)",
+                    "color": "green",
                     "value": 1
                   }
                 ]
@@ -291,7 +287,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "sum(cluster_autoscaler_cluster_safe_to_autoscale{k8s_cluster_name=~\"$cluster_name\"})",
+              "expr": "avg(cluster_autoscaler_cluster_safe_to_autoscale{k8s_cluster_name=~\"$cluster_name\"})",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "",
