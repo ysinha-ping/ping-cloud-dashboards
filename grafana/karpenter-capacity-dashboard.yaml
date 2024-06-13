@@ -668,7 +668,7 @@ spec:
                   "instance": "",
                   "instance 1": "",
                   "job": "",
-                  "k8s_cluster_name 1": "Cluster Namw",
+                  "k8s_cluster_name 1": "Cluster Name",
                   "kubernetes_namespace 1": "",
                   "nodepool": "Nodepool"
                 }
@@ -941,7 +941,7 @@ spec:
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "karpenter_nodes_total_daemon_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\"} + \nkarpenter_nodes_total_pod_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\"}",
+              "expr": "karpenter_nodes_total_daemon_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\", k8s_cluster_name=~\"$cluster_name\"} + \nkarpenter_nodes_total_pod_requests{resource_type=\"pods\",arch=~\"$arch\",capacity_type=~\"$capacity_type\",instance_type=~\"$instance_type\",nodepool=~\"$nodepool\",zone=~\"$zone\", k8s_cluster_name=~\"$cluster_name\"}",
               "format": "table",
               "hide": false,
               "instant": true,
