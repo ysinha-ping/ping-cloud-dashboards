@@ -33,7 +33,7 @@ spec:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 2,
-      "id": 63,
+      "id": 4,
       "links": [],
       "liveNow": true,
       "panels": [
@@ -627,17 +627,20 @@ spec:
                   "job": true,
                   "job 1": true,
                   "job 2": true,
+                  "k8s_cluster_name 1": true,
                   "k8s_cluster_name 2": true,
                   "kubernetes_namespace 1": true,
                   "kubernetes_namespace 2": true,
                   "pod_template_hash 1": true,
                   "pod_template_hash 2": true,
+                  "prometheus 1": true,
                   "prometheus 2": true,
+                  "receive 1": true,
                   "receive 2": true,
                   "resource_type": true,
                   "resource_type 1": true,
                   "resource_type 2": true,
-                  "tenant_id 1": false,
+                  "tenant_id 1": true,
                   "tenant_id 2": true
                 },
                 "indexByName": {
@@ -673,11 +676,11 @@ spec:
                   "instance": "",
                   "instance 1": "",
                   "job": "",
-                  "k8s_cluster_name 1": "Cluster Name",
+                  "k8s_cluster_name 1": "",
                   "kubernetes_namespace 1": "",
                   "nodepool": "Nodepool",
-                  "receive 1": "Receive",
-                  "tenant_id 1": "Tenand ID"
+                  "receive 1": "",
+                  "tenant_id 1": ""
                 }
               }
             }
@@ -1102,7 +1105,7 @@ spec:
                   "resource_type 1": true,
                   "resource_type 2": true,
                   "resource_type 3": true,
-                  "tenant_id 1": false,
+                  "tenant_id 1": true,
                   "tenant_id 2": true,
                   "tenant_id 3": true,
                   "zone 1": false,
@@ -1211,7 +1214,7 @@ spec:
                   "node_name": "Node Name",
                   "nodepool 1": "Nodepool",
                   "region 2": "Region",
-                  "tenant_id 1": "Tenant ID",
+                  "tenant_id 1": "",
                   "zone 1": "Zone"
                 }
               }
