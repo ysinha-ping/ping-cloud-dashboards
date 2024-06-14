@@ -3,10 +3,12 @@
 ### 2.0.0.0
 
 - Fix Grafana cluster autoscaler dashboard
+- Fix Grafana karpenter capacity dashboard
 
 _Changes_
 
 - [X] PDO-7517 Cluster name filter is absent for 'Number of unscheduled pods' graph
+- [X] PDO-7546 Additional columns are added to Nodepool table Karpenter Capacity dashboard
 
 ### 1.19.0.0
 

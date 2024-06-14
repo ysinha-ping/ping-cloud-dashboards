@@ -33,7 +33,7 @@ spec:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 2,
-      "id": 9,
+      "id": 63,
       "links": [],
       "liveNow": true,
       "panels": [
@@ -632,9 +632,13 @@ spec:
                   "kubernetes_namespace 2": true,
                   "pod_template_hash 1": true,
                   "pod_template_hash 2": true,
+                  "prometheus 2": true,
+                  "receive 2": true,
                   "resource_type": true,
                   "resource_type 1": true,
-                  "resource_type 2": true
+                  "resource_type 2": true,
+                  "tenant_id 1": false,
+                  "tenant_id 2": true
                 },
                 "indexByName": {
                   "Time 1": 6,
@@ -665,12 +669,15 @@ spec:
                   "Value #Memory Limit Utilization": "Memory Limit Utilization",
                   "Value #Memory Utilization": "Memory Utilization",
                   "Value #Node Count": "Node Count",
+                  "app_kubernetes_io_instance 1": "",
                   "instance": "",
                   "instance 1": "",
                   "job": "",
                   "k8s_cluster_name 1": "Cluster Name",
                   "kubernetes_namespace 1": "",
-                  "nodepool": "Nodepool"
+                  "nodepool": "Nodepool",
+                  "receive 1": "Receive",
+                  "tenant_id 1": "Tenand ID"
                 }
               }
             }
@@ -1082,6 +1089,12 @@ spec:
                   "pod_template_hash 1": true,
                   "pod_template_hash 2": true,
                   "pod_template_hash 3": true,
+                  "prometheus 1": true,
+                  "prometheus 2": true,
+                  "prometheus 3": true,
+                  "receive 1": true,
+                  "receive 2": true,
+                  "receive 3": true,
                   "region 1": true,
                   "region 2": false,
                   "region 3": true,
@@ -1089,6 +1102,9 @@ spec:
                   "resource_type 1": true,
                   "resource_type 2": true,
                   "resource_type 3": true,
+                  "tenant_id 1": false,
+                  "tenant_id 2": true,
+                  "tenant_id 3": true,
                   "zone 1": false,
                   "zone 2": true,
                   "zone 3": true
@@ -1195,6 +1211,7 @@ spec:
                   "node_name": "Node Name",
                   "nodepool 1": "Nodepool",
                   "region 2": "Region",
+                  "tenant_id 1": "Tenant ID",
                   "zone 1": "Zone"
                 }
               }
