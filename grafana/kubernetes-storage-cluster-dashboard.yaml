@@ -2494,7 +2494,7 @@ spec:
               "type": "prometheus",
               "uid": "P1809F7CD0C75ACF3"
             },
-            "definition": "label_values(kube_namespace_labels, namespace)",
+            "definition": "label_values(namespace)",
             "description": "Ping-cloud namespace",
             "hide": 0,
             "includeAll": false,
@@ -2503,8 +2503,8 @@ spec:
             "name": "ping_cloud_namespace",
             "options": [],
             "query": {
-              "query": "label_values(kube_namespace_labels, namespace)",
-              "refId": "StandardVariableQuery"
+              "query": "label_values(namespace)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
             },
             "refresh": 1,
             "regex": "/.*ping-cloud.*/",
