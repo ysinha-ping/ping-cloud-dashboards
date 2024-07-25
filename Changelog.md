@@ -53,6 +53,7 @@ _Changes_
 - [X] PDO-7559 Grafana fix 'No data' message on 'ETCD DB Size' graph
 - [X] PDO-7567 Grafana fix empty container metrics
 - [X] PDO-7568 Grafana remove duplicate graphs
+- [X] PDO-7803 Grafana fix unscheduled pods expression
 
 ### 1.18.0.0
 - Refactor 'Grafana PingFederate Topology Dashboard' queries to exclude healcheckconnection information from them
