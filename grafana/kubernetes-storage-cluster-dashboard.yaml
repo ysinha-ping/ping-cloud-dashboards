@@ -1830,6 +1830,7 @@ spec:
                   "instant": true,
                   "intervalFactor": 1,
                   "refId": "A"
+                  "legendFormat": "Used Bytes"
                 },
                 {
                   "datasource": {
@@ -1841,6 +1842,7 @@ spec:
                   "format": "table",
                   "instant": true,
                   "refId": "B"
+                  "legendFormat": "Capacity Bytes"
                 },
                 {
                   "datasource": {
@@ -1852,6 +1854,7 @@ spec:
                   "format": "table",
                   "instant": true,
                   "refId": "C"
+                  "legendFormat": "Available Bytes"
                 },
                 {
                   "datasource": {
@@ -1863,6 +1866,7 @@ spec:
                   "format": "table",
                   "instant": true,
                   "refId": "D"
+                  "legendFormat": "Usage Percent"
                 }
               ],
               "transformations": [
