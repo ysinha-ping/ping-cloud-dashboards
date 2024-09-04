@@ -1831,11 +1831,6 @@ spec:
                   "intervalFactor": 1,
                   "refId": "A",
                   "legendFormat": "Used Bytes",
-                  "fieldConfig": {
-                    "defaults": {
-                      "displayName": "Used Bytes"
-                    }
-                  }    
                 },
                 {
                   "datasource": {
@@ -1848,11 +1843,6 @@ spec:
                   "instant": true,
                   "refId": "B",
                   "legendFormat": "Capacity Bytes",
-                "fieldConfig": {
-                    "defaults": {
-                      "displayName": "Capacity Bytes"
-                    }
-                  }    
                 },
                 {
                   "datasource": {
@@ -1865,11 +1855,6 @@ spec:
                   "instant": true,
                   "refId": "C",
                   "legendFormat": "Available Bytes",
-                  "fieldConfig": {
-                    "defaults": {
-                      "displayName": "Available Bytes"
-                    }
-                  }    
                 },
                 {
                   "datasource": {
@@ -1882,12 +1867,7 @@ spec:
                   "instant": true,
                   "refId": "D",
                   "legendFormat": "Usage Percent",
-                  "fieldConfig": {
-                    "defaults": {
-                      "displayName": "Usage Percent"
-                    }
-                  }    
-                }
+              }
               ],
               "transformations": [
                 {
@@ -1898,6 +1878,19 @@ spec:
                   }
                 }
               ],
+              "transformations": [
+               {
+                 "id": "organize",
+                 "options": {
+                  "renameByName": {
+                    "Value #A": "Used Bytes",
+                    "Value #B": "Capacity Bytes",
+                    "Value #C": "Available Bytes",
+                    "Value #D": "Usage Percent"
+                  }
+                }
+              }
+            ]
               "title": "PVC Stats",
               "transform": "table",
               "type": "table"
