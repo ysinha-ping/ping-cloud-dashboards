@@ -1880,7 +1880,7 @@ spec:
               ],
               "transformations": [
                {
-                 "id": "organize",
+                 "id": "organize_fields",
                  "options": {
                   "renameByName": {
                     "Value #A": "Used Bytes",
