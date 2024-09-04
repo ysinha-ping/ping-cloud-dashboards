@@ -1880,7 +1880,7 @@ spec:
                   "expr": "(max by (persistentvolumeclaim,exported_namespace) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} )) / (max by (persistentvolumeclaim,exported_namespace) (kubelet_volume_stats_capacity_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} ))",
                   "format": "table",
                   "instant": true,
-                  "refId": "D"
+                  "refId": "D",
                   "legendFormat": "Usage Percent",
                   "fieldConfig": {
                     "defaults": {
