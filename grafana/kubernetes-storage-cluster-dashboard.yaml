@@ -1878,8 +1878,7 @@ spec:
                   }
                 }
               ],
-              "transformations": [
-               {
+              {
                  "id": "organize_fields",
                  "options": {
                   "renameByName": {
