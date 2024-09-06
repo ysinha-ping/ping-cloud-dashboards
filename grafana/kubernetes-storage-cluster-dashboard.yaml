@@ -5,7 +5,7 @@ metadata:
   name: kubernetesclusterstorage
 spec:
   folder: "Kubernetes"
-  resyncPeriod: 1m
+  resyncPeriod: 30m
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
@@ -1864,15 +1864,6 @@ spec:
                   "instant": true,
                   "refId": "D"
               }
-              ],
-              "transformations": [
-                {
-                 "id": "merge",
-                 "options": {
-                   "id": "merge",
-                   "field": "merge"
-                  }
-                }
               ],
               "title": "PVC Stats",
               "transform": "table",
