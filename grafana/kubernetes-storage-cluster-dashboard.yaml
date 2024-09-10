@@ -1865,12 +1865,7 @@ spec:
                   "refId": "D"
               }
               ],
-              "title": "PVC Stats",
-              "transform": "table",
-              "type": "table"
-            }
-          ],
-          "transformations": [
+              "transformations": [
                 {
                  "id": "merge",
                  "options": {
@@ -1879,6 +1874,11 @@ spec:
                   }
                 }
               ],
+              "title": "PVC Stats",
+              "transform": "table",
+              "type": "table"
+            }
+          ],
           "targets": [
             {
               "datasource": {
