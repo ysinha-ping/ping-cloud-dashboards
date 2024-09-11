@@ -1888,12 +1888,10 @@ spec:
                     "Value #D": "Usage Percent"
                   }
                 }
-              }
-            ]
+              } 
               "title": "PVC Stats",
               "transform": "table",
               "type": "table"
-            }
           ],
           "targets": [
             {
