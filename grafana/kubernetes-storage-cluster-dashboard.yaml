@@ -1875,16 +1875,12 @@ spec:
                  "options": {
                    "id": "merge",
                    "field": "merge"
-                  }
-                }
-              ],
-              {
-                 "id": "organize_fields",
+                 "id": "organize_fields"
                  "options": {
-                  "renameByName": {
-                    "Value #A": "Used Bytes",
-                    "Value #B": "Capacity Bytes",
-                    "Value #C": "Available Bytes",
+                   "renameByName": {
+                    "Value #A": "Used Bytes"
+                    "Value #B": "Capacity Bytes"
+                    "Value #C": "Available Bytes"
                     "Value #D": "Usage Percent"
                   }
                 }
