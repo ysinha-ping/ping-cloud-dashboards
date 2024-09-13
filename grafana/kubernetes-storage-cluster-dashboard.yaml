@@ -1178,7 +1178,7 @@ spec:
                     "#FF9830"
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "pattern": "Value #A",
+                  "pattern": "Used",
                   "thresholds": [
                     "0",
                     "0"
@@ -1196,7 +1196,7 @@ spec:
                     "rgba(50, 172, 45, 0.97)"
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "pattern": "Value #B",
+                  "pattern": "Capacity",
                   "thresholds": [],
                   "type": "number",
                   "unit": "bytes"
@@ -1211,7 +1211,7 @@ spec:
                     "rgba(50, 172, 45, 0.97)"
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "pattern": "Value #C",
+                  "pattern": "Free",
                   "thresholds": [],
                   "type": "number",
                   "unit": "bytes"
@@ -1227,7 +1227,7 @@ spec:
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
                   "decimals": 2,
-                  "pattern": "Value #D",
+                  "pattern": "% Used",
                   "thresholds": [
                     "($pvc_percent_used_warning_threshold / 100)",
                     ".9"
@@ -1311,7 +1311,7 @@ spec:
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
                   "decimals": 2,
-                  "pattern": "Value #F",
+                  "pattern": "Volume Stats Exist?",
                   "thresholds": [
                     "1",
                     "1"
@@ -1640,7 +1640,7 @@ spec:
                     "rgba(50, 172, 45, 0.97)"
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "pattern": "Value #A",
+                  "pattern": "Used",
                   "thresholds": [],
                   "type": "number",
                   "unit": "bytes"
@@ -1655,7 +1655,7 @@ spec:
                     "rgba(50, 172, 45, 0.97)"
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "pattern": "Value #B",
+                  "pattern": "Capacity",
                   "thresholds": [],
                   "type": "number",
                   "unit": "bytes"
@@ -1670,7 +1670,7 @@ spec:
                     "rgba(50, 172, 45, 0.97)"
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "pattern": "Value #C",
+                  "pattern": "Free",
                   "thresholds": [],
                   "type": "number",
                   "unit": "bytes"
@@ -1687,7 +1687,7 @@ spec:
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
                   "decimals": 2,
-                  "pattern": "Value #D",
+                  "pattern": "% Used",
                   "thresholds": [
                     ".8",
                     ".9"
@@ -1771,7 +1771,7 @@ spec:
                   ],
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
                   "decimals": 2,
-                  "pattern": "Value #F",
+                  "pattern": "Volume Stats Exist?",
                   "thresholds": [
                     "1",
                     "1"
