@@ -1817,7 +1817,7 @@ spec:
                   "expr": "(1-max by (persistentvolumeclaim, exported_namespace) (kube_persistentvolumeclaim_info{k8s_cluster_name=~\"$k8s_cluster_name\"} ) ) unless (max by (exported_namespace, persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} )) or ((max by (persistentvolumeclaim, exported_namespace) (kube_persistentvolumeclaim_info{k8s_cluster_name=~\"$k8s_cluster_name\"} ) ) and (max by (exported_namespace, persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} )))",
                   "format": "table",
                   "instant": true,
-                  "refId": "F"
+                  "refId": "Volume Stats Exist?"
                 },
                 {
                   "datasource": {
@@ -1829,7 +1829,7 @@ spec:
                   "format": "table",
                   "instant": true,
                   "intervalFactor": 1,
-                  "refId": "A"
+                  "refId": "Used"
                 },
                 {
                   "datasource": {
@@ -1840,7 +1840,7 @@ spec:
                   "expr": "max by (persistentvolumeclaim,exported_namespace) (kubelet_volume_stats_capacity_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} )",
                   "format": "table",
                   "instant": true,
-                  "refId": "B"
+                  "refId": "Capacity"
                 },
                 {
                   "datasource": {
@@ -1851,7 +1851,7 @@ spec:
                   "expr": "max by (persistentvolumeclaim,exported_namespace) (kubelet_volume_stats_available_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} )",
                   "format": "table",
                   "instant": true,
-                  "refId": "C"
+                  "refId": "Free"
                 },
                 {
                   "datasource": {
@@ -1862,7 +1862,7 @@ spec:
                   "expr": "(max by (persistentvolumeclaim,exported_namespace) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} )) / (max by (persistentvolumeclaim,exported_namespace) (kubelet_volume_stats_capacity_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"} ))",
                   "format": "table",
                   "instant": true,
-                  "refId": "D"
+                  "refId": "% Used"
               }
               ],
               "transformations": [
