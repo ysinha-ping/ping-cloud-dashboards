@@ -2503,23 +2503,23 @@ spec:
               "type": "prometheus",
               "uid": "P1809F7CD0C75ACF3"
             },
-            "definition": "label_values(namespace)",
-            "description": "Ping-cloud namespace",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Ping-cloud namespace",
-            "multi": false,
-            "name": "ping_cloud_namespace",
-            "options": [],
-            "query": {
-              "query": "label_values(namespace)",
-              "refId": "PrometheusVariableQueryEditor-VariableQuery"
-            },
-            "refresh": 1,
-            "regex": "/.*ping-cloud.*/",
-            "skipUrlSync": false,
-            "sort": 0,
-            "type": "query"
+            #"definition": "label_values(namespace)",
+            #"description": "Ping-cloud namespace",
+            #"hide": 0,
+            #"includeAll": false,
+            #"label": "Ping-cloud namespace",
+            #"multi": false,
+            #"name": "ping_cloud_namespace",
+            #"options": [],
+            #"query": {
+             # "query": "label_values(namespace)",
+              #"refId": "PrometheusVariableQueryEditor-VariableQuery"
+           # },
+            #"refresh": 1,
+            #"regex": "/.*ping-cloud.*/",
+            #"skipUrlSync": false,
+            #"sort": 0,
+            #"type": "query"
           },
           {
             "allFormat": "",
