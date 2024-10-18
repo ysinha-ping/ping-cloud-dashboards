@@ -128,7 +128,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "(\n  count (\n    (predict_linear(kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace!=\"$ping_cloud_namespace\"}[1d], 7 * 24 * 60 * 60) <= 0)\n  )\n)\nor\nvector(0)",
+                  "expr": "(\n  count (\n    (predict_linear(kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"}[1d], 7 * 24 * 60 * 60) <= 0)\n  )\n)\nor\nvector(0)",
                   "instant": false,
                   "intervalFactor": 1,
                   "legendFormat": "alerts",
@@ -211,7 +211,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "(\n  count (\n    (predict_linear(kubelet_volume_stats_available_bytes{k8s_cluster_name=~\"$k8s_cluster_name\",namespace=\"$ping_cloud_namespace\"}[1d], 7 * 24 * 60 * 60) <= 0)\n  )\n)\nor\nvector(0)",
+                  "expr": "(\n  count (\n    (predict_linear(kubelet_volume_stats_available_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"}[1d], 7 * 24 * 60 * 60) <= 0)\n  )\n)\nor\nvector(0)",
                   "instant": false,
                   "intervalFactor": 1,
                   "legendFormat": "alerts",
@@ -463,23 +463,6 @@ spec:
                   "unit": "bytes"
                 },
                 {
-                  "$$hashKey": "object:616",
-                  "alias": "Namespace",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "mappingType": 1,
-                  "pattern": "namespace",
-                  "thresholds": [],
-                  "type": "string",
-                  "unit": "short"
-                },
-                {
                   "$$hashKey": "object:617",
                   "alias": "PVC",
                   "align": "auto",
@@ -519,7 +502,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace!~\"$ping_cloud_namespace\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
+                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
                   "format": "table",
                   "instant": true,
                   "intervalFactor": 1,
@@ -624,7 +607,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "count (\n  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace!~\"$ping_cloud_namespace\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )\n)",
+                  "expr": "count (\n  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )\n)",
                   "legendFormat": "Alerts - Volumes Full in Week Based on Daily Use Rate (Infrastructure)",
                   "range": true,
                   "refId": "A"
@@ -734,7 +717,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace!~\"$ping_cloud_namespace\"})[1d:10m]), 7 * 24 * 60 * 60)",
+                  "expr": "predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]), 7 * 24 * 60 * 60)",
                   "format": "time_series",
                   "hide": false,
                   "instant": false,
@@ -826,23 +809,6 @@ spec:
                   "unit": "bytes"
                 },
                 {
-                  "$$hashKey": "object:896",
-                  "alias": "Namespace",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "mappingType": 1,
-                  "pattern": "namespace",
-                  "thresholds": [],
-                  "type": "string",
-                  "unit": "short"
-                },
-                {
                   "$$hashKey": "object:897",
                   "alias": "PVC",
                   "align": "auto",
@@ -883,7 +849,7 @@ spec:
                   },
                   "editorMode": "code",
                   "exemplar": false,
-                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace=~\"$ping_cloud_namespace\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
+                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
                   "format": "table",
                   "instant": true,
                   "intervalFactor": 1,
@@ -989,8 +955,8 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "count (\n  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace=~\"$ping_cloud_namespace\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )\n)",
-                  "legendFormat": "Alerts - Volumes Full in Week Based on Daily Use Rate (Ping-cloud Namespace: $ping_cloud_namespace)",
+                  "expr": "count (\n  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )\n)",
+                  "legendFormat": "Alerts - Volumes Full in Week Based on Daily Use Rate",
                   "range": true,
                   "refId": "A"
                 }
@@ -1099,7 +1065,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace=~\"$ping_cloud_namespace\"})[1d:10m]), 7 * 24 * 60 * 60)",
+                  "expr": "predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]), 7 * 24 * 60 * 60)",
                   "format": "time_series",
                   "hide": false,
                   "instant": false,
@@ -1263,22 +1229,6 @@ spec:
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
                   "decimals": 2,
                   "pattern": "volumename",
-                  "thresholds": [],
-                  "type": "string",
-                  "unit": "short"
-                },
-                {
-                  "$$hashKey": "object:3949",
-                  "alias": "Namespace",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "pattern": "namespace",
                   "thresholds": [],
                   "type": "string",
                   "unit": "short"
@@ -1723,22 +1673,6 @@ spec:
                   "dateFormat": "YYYY-MM-DD HH:mm:ss",
                   "decimals": 2,
                   "pattern": "volumename",
-                  "thresholds": [],
-                  "type": "string",
-                  "unit": "short"
-                },
-                {
-                  "$$hashKey": "object:5214",
-                  "alias": "Namespace",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "pattern": "namespace",
                   "thresholds": [],
                   "type": "string",
                   "unit": "short"
@@ -2502,24 +2436,7 @@ spec:
             "datasource": {
               "type": "prometheus",
               "uid": "P1809F7CD0C75ACF3"
-            },
-            "definition": "label_values(namespace)",
-            "description": "Ping-cloud namespace",
-            "hide": 0,
-            "includeAll": false,
-            "label": "Ping-cloud namespace",
-            "multi": false,
-            "name": "ping_cloud_namespace",
-            "options": [],
-            "query": {
-              "query": "label_values(namespace)",
-              "refId": "PrometheusVariableQueryEditor-VariableQuery"
-            },
-            "refresh": 1,
-            "regex": "/.*ping-cloud.*/",
-            "skipUrlSync": false,
-            "sort": 0,
-            "type": "query"
+            }
           },
           {
             "allFormat": "",
