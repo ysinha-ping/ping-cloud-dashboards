@@ -1800,17 +1800,32 @@ spec:
               }
               ],
               "transformations": [
-                {
-                 "id": "merge",
-                 "options": {
-                   "id": "merge",
-                   "field": "merge"
-                  }
+               {
+                "id": "merge",
+                "options": {
+                  "id": "merge",
+                  "field": "merge"
+                 }
+               },
+               {
+                "id": "organize",
+                "options": {
+                  "fields": [
+                    {
+                      "field": "namespace",
+                      "visible": false
+                    },
+                    {
+                      "field": "exported_namespace",
+                      "rename": "namespace"
+                    }
+                  ]
                 }
-              ],
-              "title": "PVC Stats",
-              "transform": "table",
-              "type": "table"
+              }
+             ],
+             "title": "PVC Stats",
+             "transform": "table",
+             "type": "table"
             }
           ],
           "targets": [
