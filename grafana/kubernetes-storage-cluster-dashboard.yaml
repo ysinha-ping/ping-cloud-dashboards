@@ -1801,21 +1801,6 @@ spec:
               ],
               "transformations": [
                 {
-                 "id": "organize",
-                 "options": {
-                   "fields": [
-                    {
-                      "field": "namespace",
-                      "visible": false
-                    },
-                    {
-                      "field": "exported_namespace",
-                      "rename": "namespace"
-                    }
-                   ]
-                  }
-                 },
-                 {      
                  "id": "merge",
                  "options": {
                    "id": "merge",
@@ -1826,7 +1811,8 @@ spec:
               "title": "PVC Stats",
               "transform": "table",
               "type": "table"
-            },
+            }
+          ],
           "targets": [
             {
               "datasource": {
