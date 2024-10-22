@@ -2182,10 +2182,10 @@ spec:
             "definition": "",
             "hide": 0,
             "includeAll": false,
-            "label": "exported_namespace",
+            "label": "Namespace",
             "multi": false,
             "multiFormat": "",
-            "name": "exported_namespace",
+            "name": "namespace",
             "options": [],
             "query": {
               "query": "label_values(kube_namespace_created,exported_namespace)",
