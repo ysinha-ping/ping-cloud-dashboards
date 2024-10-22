@@ -2182,13 +2182,13 @@ spec:
             "definition": "",
             "hide": 0,
             "includeAll": false,
-            "label": "Namespace",
+            "label": "exported_namespace",
             "multi": false,
             "multiFormat": "",
-            "name": "namespace",
+            "name": "exported_namespace",
             "options": [],
             "query": {
-              "query": "label_values(kube_namespace_created,namespace)",
+              "query": "label_values(kube_namespace_created,exported_namespace)",
               "refId": "prometheus-namespace-Variable-Query"
             },
             "refresh": 1,
