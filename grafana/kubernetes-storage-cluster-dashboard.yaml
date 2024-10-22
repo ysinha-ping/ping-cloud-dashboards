@@ -1801,11 +1801,11 @@ spec:
               ],
               "transformations": [
                {
-                #"id": "merge",
-                #"options": {
-                 # "id": "merge",
-                  #"field": "merge"
-                 #}
+                "id": "merge",
+                "options": {
+                  "id": "merge",
+                  "field": "merge"
+                 }
                },
                {
                 "id": "organize",
@@ -1813,11 +1813,11 @@ spec:
                   "fields": [
                     {
                       "field": "namespace",
-                      "Disable": true
+                      "visible": false
                     },
                     {
                       "field": "exported_namespace",
-                      "Rename": "Namespace"
+                      "rename": "namespace"
                     }
                   ]
                 }
