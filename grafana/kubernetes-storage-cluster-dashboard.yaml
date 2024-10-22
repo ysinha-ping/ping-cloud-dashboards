@@ -1801,11 +1801,11 @@ spec:
               ],
               "transformations": [
                {
-                "id": "merge",
-                "options": {
-                  "id": "merge",
-                  "field": "merge"
-                 }
+                #"id": "merge",
+                #"options": {
+                 # "id": "merge",
+                  #"field": "merge"
+                 #}
                },
                {
                 "id": "organize",
