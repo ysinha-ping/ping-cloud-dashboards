@@ -1813,11 +1813,11 @@ spec:
                   "fields": [
                     {
                       "field": "namespace",
-                      "visible": false
+                      "Disable": true
                     },
                     {
                       "field": "exported_namespace",
-                      "rename": "namespace"
+                      "Rename": "Namespace"
                     }
                   ]
                 }
