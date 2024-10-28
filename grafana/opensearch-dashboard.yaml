@@ -426,15 +426,15 @@ spec:
               "datasource": {
                 "uid": "$datasource"
               },
-              "expr": "max(opensearch_cluster_datanodes_number{cluster=\"$cluster\"})",
+              "expr": "avg(opensearch_cluster_shards_active_percent)",
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "",
               "refId": "A"
             }
           ],
-          "title": "Data nodes",
-          "type": "stat"
+          "title": "Average Active Shards (%)",
+          "type": "gauge"
         },
         {
           "datasource": {
@@ -442,36 +442,24 @@ spec:
           },
           "fieldConfig": {
             "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [
-                {
-                  "options": {
-                    "match": "null",
-                    "result": {
-                      "text": "N/A"
-                    }
-                  },
-                  "type": "special"
-                }
-              ],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "red",
+                    "value": 95
                   },
                   {
-                    "color": "red",
-                    "value": 80
+                    "color": "#EAB839",
+                    "value": 99
+                  },
+                  {
+                    "color": "green",
+                    "value": 100
                   }
                 ]
               },
-              "unit": "none"
             },
-            "overrides": []
           },
           "gridPos": {
             "h": 3,
