@@ -424,67 +424,89 @@ spec:
           "targets": [
             {
               "datasource": {
+                "type": "prometheus",
                 "uid": "$datasource"
               },
-              "expr": "avg(opensearch_cluster_shards_active_percent)",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "",
-              "refId": "A"
-            }
-          ],
-          "title": "Average Active Shards (%)",
-          "type": "gauge"
-        },
-        {
-          "datasource": {
-            "uid": "$datasource"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "red",
-                    "value": 95
+              "fieldConfig": {
+                "defaults": {
+                  "mappings": [
+                    {
+                      "options": {
+                        "match": "null",
+                        "result": {
+                          "text": "N/A"
+                        }
+                      },
+                      "type": "special"
+                    }
+                  ],
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": null
+                      },
+                      {
+                        "color": "red",
+                        "value": 95
+                      },
+                      {
+                        "color": "#EAB839",
+                        "value": 99
+                      },
+                      {
+                        "color": "dark-green",
+                        "value": 100
+                      }
+                    ]
                   },
-                  {
-                    "color": "#EAB839",
-                    "value": 99
+                  "color": {
+                    "mode": "thresholds"
                   },
-                  {
-                    "color": "green",
-                    "value": 100
-                  }
-                ]
+                  "unit": "none"
+                },
+                "overrides": []
               },
-            },
-          },
-          "gridPos": {
-            "h": 3,
-            "w": 4,
-            "x": 20,
-            "y": 1
-          },
-          "id": 6,
-          "links": [],
-          "maxDataPoints": 100,
-          "options": {
-            "colorMode": "none",
-            "graphMode": "none",
-            "justifyMode": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "mean"
+              "gridPos": {
+                "h": 3,
+                "w": 4,
+                "x": 16,
+                "y": 1
+              },
+              "id": 5,
+              "links": [],
+              "maxDataPoints": 100,
+              "options": {
+                "reduceOptions": {
+                  "values": false,
+                  "calcs": [
+                    "last"
+                  ],
+                  "fields": ""
+                },
+                "orientation": "horizontal",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+              },
+              "pluginVersion": "10.1.0",
+              "targets": [
+                {
+                  "datasource": {
+                    "uid": "$datasource"
+                  },
+                  "editorMode": "code",
+                  "expr": "avg(opensearch_cluster_shards_active_percent)",
+                  "format": "time_series",
+                  "intervalFactor": 2,
+                  "legendFormat": "",
+                  "range": true,
+                  "refId": "A"
+                }
               ],
-              "fields": "",
-              "values": false
-            },
-            "textMode": "auto"
-          },
-          "pluginVersion": "9.3.6",
+              "title": "Average Active Shards (%)",
+              "type": "gauge"
+            }
           "targets": [
             {
               "datasource": {
