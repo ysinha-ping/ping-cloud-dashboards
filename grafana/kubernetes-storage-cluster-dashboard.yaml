@@ -1814,7 +1814,7 @@ spec:
                       "namespace": true
                     },
                     "renameByName": {
-                      "exported_namespace": "Namespace"
+                      "exported_namespace": "Namespace",
                       "__name__": "Name",
                       "container": "Container",
                       "endpoint": "Endpoint",
