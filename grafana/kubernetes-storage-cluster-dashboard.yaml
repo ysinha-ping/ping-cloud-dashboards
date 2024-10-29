@@ -1815,6 +1815,28 @@ spec:
                     },
                     "renameByName": {
                       "exported_namespace": "Namespace"
+                      "__name__": "Name",
+                      "container": "Container",
+                      "endpoint": "Endpoint",
+                      "instance": "Instance",
+                      "job": "Job",
+                      "k8s_cluster_name": "Cluster Name",
+                      "namespace": "",
+                      "persistentvolumeclaim": "Persistentvolumeclaim",
+                      "pod": "Pod",
+                      "prometheus": "Prometheus",
+                      "receive": "Receive",
+                      "service": "Service",
+                      "storageclass": "Storageclass",
+                      "tenant_id": "Tenant_id",
+                      "volumemode": "Volumemode",
+                      "volumename": "Volumename",
+                      "Value #Volume Stats Exist?": "Volume Status Exist ?",
+                      "Value #F": "Unused PVC Volumes",
+                      "Value #Used": "Used bytes",
+                      "Value #Capacity": "Capacity in bytes",
+                      "Value #Free": "Free bytes",
+                      "Value #% Used": "% Used"
                     }
                   }
                 }
