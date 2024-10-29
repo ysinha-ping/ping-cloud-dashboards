@@ -424,22 +424,12 @@ spec:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "$datasource",
+                "type": "prometheus"
               },
               "fieldConfig": {
                 "defaults": {
-                  "mappings": [
-                    {
-                      "options": {
-                        "match": "null",
-                        "result": {
-                          "text": "N/A"
-                        }
-                      },
-                      "type": "special"
-                    }
-                  ],
+                  "mappings": [],
                   "thresholds": {
                     "mode": "percentage",
                     "steps": [
@@ -448,24 +438,20 @@ spec:
                         "value": null
                       },
                       {
-                        "color": "red",
+                        "color": "dark-red",
                         "value": 95
                       },
                       {
-                        "color": "#EAB839",
-                        "value": 99
+                        "value": 99,
+                        "color": "dark-yellow"
                       },
                       {
-                        "color": "dark-green",
-                        "value": 100
+                        "value": 100,
+                        "color": "dark-green"
                       }
                     ]
-                  },
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "unit": "none"
-                },
+                  }
+                }
                 "overrides": []
               },
               "gridPos": {
@@ -481,15 +467,33 @@ spec:
                 "reduceOptions": {
                   "values": false,
                   "calcs": [
-                    "last"
+                    "lastNotNull"
                   ],
                   "fields": ""
                 },
-                "orientation": "horizontal",
+                "orientation": "auto",
                 "showThresholdLabels": false,
                 "showThresholdMarkers": true
               },
               "pluginVersion": "10.1.0",
+              "targets": [
+                {
+                  "datasource": {
+                    "uid": "$datasource"
+                  },
+                  "expr": "avg(opensearch_cluster_shards_active_percent)",
+                  "format": "time_series",
+                  "intervalFactor": 2,
+                  "legendFormat": "",
+                  "refId": "A",
+                  "editorMode": "code",
+                  "range": true
+                }
+              ],
+              "title": "Average Active Shards (%)",
+              "type": "gauge"
+            },
+            {
               "targets": [
                 {
                   "datasource": {
