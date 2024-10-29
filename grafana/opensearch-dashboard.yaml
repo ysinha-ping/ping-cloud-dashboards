@@ -511,8 +511,8 @@ spec:
               "title": "Average Active Shards (%)",
               "type": "gauge"
             },
-          "targets": [
-            {
+            "targets": [
+             {
               "datasource": {
                 "uid": "$datasource"
               },
