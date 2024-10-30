@@ -462,7 +462,7 @@ spec:
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
+                    "color": "green"
                     "value": null
                   }
                 ]
@@ -496,7 +496,7 @@ spec:
             },
             "textMode": "auto"
           },
-          "pluginVersion": "9.3.6",
+          "pluginVersion": "10.1.0",
           "targets": [
             {
               "datasource": {
