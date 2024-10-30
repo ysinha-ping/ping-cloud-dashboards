@@ -430,7 +430,7 @@ spec:
               "format": "time_series",
               "intervalFactor": 2,
               "legendFormat": "__auto",
-              "refId": "A"
+              "refId": "A",
             }
           ],
           "title": "Average Active Shards (%)",
@@ -460,7 +460,7 @@ spec:
                 "mode": "percentage",
                 "steps": [
                   {
-                    "color": "green",
+                    "color": "green"
                     "value": null
                   }
                 ]
@@ -481,6 +481,7 @@ spec:
           "options": {
             "showThresholdLabels": false,
             "showThresholdMarkers": true,
+            "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
@@ -491,7 +492,8 @@ spec:
             },
             "textMode": "auto"
           },
-          "pluginVersion": "9.3.6",
+          "pluginVersion": "9.3.6"
+        }
           "targets": [
             {
               "datasource": {
