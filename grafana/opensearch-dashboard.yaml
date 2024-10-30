@@ -493,24 +493,6 @@ spec:
               "title": "Average Active Shards (%)",
               "type": "gauge"
             },
-            {
-              "targets": [
-                {
-                  "datasource": {
-                    "uid": "$datasource"
-                  },
-                  "editorMode": "code",
-                  "expr": "avg(opensearch_cluster_shards_active_percent)",
-                  "format": "time_series",
-                  "intervalFactor": 2,
-                  "legendFormat": "",
-                  "range": true,
-                  "refId": "A"
-                }
-              ],
-              "title": "Average Active Shards (%)",
-              "type": "gauge"
-            },
             "targets": [
              {
               "datasource": {
