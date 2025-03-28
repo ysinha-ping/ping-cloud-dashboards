@@ -623,6 +623,89 @@ spec:
           "type": "timeseries"
         }
       ],
+      {
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "expr": "sum(fluentbit_storage_mem_chunks) by (pod)",
+              "legendFormat": "Memory Chunks",
+              "range": true,
+              "editorMode": "code"
+            },
+            {
+              "refId": "B",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "expr": "sum(fluentbit_storage_fs_chunks) by (pod)",
+              "legendFormat": "Filesystem Chunks",
+              "range": true,
+              "editorMode": "code"
+            },
+            {
+              "refId": "C",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "$datasource"
+              },
+              "expr": "sum(fluentbit_input_storage_overlimit) by (pod)",
+              "legendFormat": "Overlimit Chunks",
+              "range": true,
+              "editorMode": "code"
+            }
+          ],
+          "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
+          "description": "Shows memory and filesystem chunk usage per pod along with overlimit tracking",
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "orientation": "auto",
+            "textMode": "auto",
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto"
+          },
+          "pluginVersion": "10.1.0",
+          "type": "timeseries"
+        }
+      ],
       "refresh": "1m",
       "schemaVersion": 37,
       "style": "dark",
