@@ -621,15 +621,28 @@ spec:
           ],
           "title": "Logstash heap usage",
           "type": "timeseries"
-        }
-      ],
-      {
+        },
+        {
+          "id": 15,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 26
+          },
+          "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
+          "description": "Shows memory and filesystem chunk usage per pod along with overlimit tracking",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
           "targets": [
             {
               "refId": "A",
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(fluentbit_storage_mem_chunks) by (pod)",
               "legendFormat": "Memory Chunks",
@@ -640,7 +653,7 @@ spec:
               "refId": "B",
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(fluentbit_storage_fs_chunks) by (pod)",
               "legendFormat": "Filesystem Chunks",
@@ -651,7 +664,7 @@ spec:
               "refId": "C",
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(fluentbit_input_storage_overlimit) by (pod)",
               "legendFormat": "Overlimit Chunks",
@@ -659,14 +672,6 @@ spec:
               "editorMode": "code"
             }
           ],
-          "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
-          "description": "Shows memory and filesystem chunk usage per pod along with overlimit tracking",
-          "gridPos": {
-            "x": 0,
-            "y": 0,
-            "w": 12,
-            "h": 8
-          },
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -702,8 +707,7 @@ spec:
             "graphMode": "area",
             "justifyMode": "auto"
           },
-          "pluginVersion": "10.1.0",
-          "type": "timeseries"
+          "pluginVersion": "10.1.0"
         }
       ],
       "refresh": "1m",
