@@ -298,7 +298,7 @@ spec:
             "h": 9,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 32
           },
           "id": 2,
           "interval": "1m",
@@ -486,7 +486,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 17
+            "y": 49
           },
           "id": 6,
           "options": {
@@ -628,7 +628,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 8
           },
           "title": "Fluentbit Memory Usage (%)",
           "description": "FluentBit's Memory utilization in percentage",
@@ -670,7 +670,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 16
           },
           "title": "Fluentbit CPU Usage (%)",
           "description": "FluentBit's CPU utilization in percentage",
@@ -712,7 +712,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 24
           },
           "title": "FluentBit In-Memory Buffer Usage Bytes",
           "description": "Displays the total size of logs currently buffered in memory across all Fluent Bit input plugins.",
@@ -741,7 +741,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 41
           },
           "title": "Disk Buffer (Filesystem) Usage in Bytes",
           "description": "The total size in bytes of all busy (in-use) chunks stored on disk",
@@ -782,7 +782,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 34
+            "y": 65
           },
           "title": "FluentBit Input Plugin Memory Overlimit",
           "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
@@ -811,7 +811,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 26
+            "y": 57
           },
           "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
           "description": "Shows memory and filesystem chunk usage per pod",
