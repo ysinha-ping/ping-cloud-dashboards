@@ -623,6 +623,142 @@ spec:
           "type": "timeseries"
         },
         {
+          "id": 22,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "title": "FluentBit Input vs Output & Data Volume",
+          "description": "Tracks FluentBit’s end-to-end log processing — from records ingested to records delivered, along with the volume of outgoing log data.\n\nMismatch between record rate and byte rate – High records/sec with low KB/sec may indicate malformed or empty logs.\n\nFlat lines – FluentBit may be stalled, misconfigured, or not ingesting logs.\n\nSudden spikes or drops – Possible log bursts, restarts, or downstream issues.",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(rate(fluentbit_input_records_total[5m]))",
+              "legendFormat": "Input Records/sec",
+              "range": true,
+              "instant": false,
+              "editorMode": "code"
+            },
+            {
+              "refId": "B",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(rate(fluentbit_output_proc_records_total[5m]))",
+              "legendFormat": "Output Records/sec",
+              "range": true,
+              "instant": false,
+              "editorMode": "code",
+              "hide": false
+            },
+            {
+              "refId": "C",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(rate(fluentbit_output_proc_bytes_total[5m])) / 1024",
+              "legendFormat": "Output KB/sec",
+              "range": true,
+              "instant": false,
+              "editorMode": "code",
+              "hide": false
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
+        },
+        {
+          "id": 21,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "title": "FluentBit Output Issues (Errors, Drops, Retries)",
+          "description": "Detects issues in FluentBit output processing such as plugin errors, dropped records and retry storms.",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(rate(fluentbit_output_retries_total[5m]))",
+              "legendFormat": "Retries/sec",
+              "range": true,
+              "instant": false,
+              "editorMode": "code"
+            },
+            {
+              "refId": "B",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(rate(fluentbit_output_errors_total[5m]))",
+              "legendFormat": "Errors/sec",
+              "range": true,
+              "instant": false,
+              "editorMode": "code",
+              "hide": false
+            },
+            {
+              "refId": "C",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(rate(fluentbit_output_dropped_records_total[5m]))",
+              "legendFormat": "Dropped Records/sec",
+              "range": true,
+              "instant": false,
+              "editorMode": "code",
+              "hide": false
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
+        },
+        {
           "id": 16,
           "gridPos": {
             "h": 8,
