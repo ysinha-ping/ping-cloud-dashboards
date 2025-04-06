@@ -100,7 +100,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 16
           },
           "id": 10,
           "interval": "1m",
@@ -199,7 +199,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 0
+            "y": 18
           },
           "id": 12,
           "interval": "1m",
@@ -295,10 +295,10 @@ spec:
             "overrides": []
           },
           "gridPos": {
-            "h": 9,
+            "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 32
+            "x": 12,
+            "y": 0
           },
           "id": 2,
           "interval": "1m",
@@ -389,10 +389,10 @@ spec:
             "overrides": []
           },
           "gridPos": {
-            "h": 9,
+            "h": 8,
             "w": 12,
             "x": 12,
-            "y": 8
+            "y": 9
           },
           "id": 4,
           "interval": "1m",
@@ -486,7 +486,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 49
+            "y": 0
           },
           "id": 6,
           "options": {
@@ -578,8 +578,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 12,
-            "y": 17
+            "x": 0,
+            "y": 8
           },
           "id": 8,
           "options": {
@@ -628,7 +628,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 24
           },
           "title": "FluentBit Input vs Output & Data Volume",
           "description": "Tracks FluentBit’s end-to-end log processing — from records ingested to records delivered, along with the volume of outgoing log data.\n\nMismatch between record rate and byte rate – High records/sec with low KB/sec may indicate malformed or empty logs.\n\nFlat lines – FluentBit may be stalled, misconfigured, or not ingesting logs.\n\nSudden spikes or drops – Possible log bursts, restarts, or downstream issues.",
@@ -696,7 +696,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 40
           },
           "title": "FluentBit Output Issues (Errors, Drops, Retries)",
           "description": "Detects issues in FluentBit output processing such as plugin errors, dropped records and retry storms.",
@@ -763,8 +763,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 8
+            "x": 12,
+            "y": 34
           },
           "title": "Fluentbit Memory Usage (%)",
           "description": "FluentBit's Memory utilization in percentage",
@@ -806,7 +806,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 16
+            "y": 32
           },
           "title": "Fluentbit CPU Usage (%)",
           "description": "FluentBit's CPU utilization in percentage",
@@ -847,8 +847,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 24
+            "x": 12,
+            "y": 42
           },
           "title": "FluentBit In-Memory Buffer Usage Bytes",
           "description": "Displays the total size of logs currently buffered in memory across all Fluent Bit input plugins.",
@@ -876,8 +876,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 41
+            "x": 12,
+            "y": 50
           },
           "title": "Disk Buffer (Filesystem) Usage in Bytes",
           "description": "The total size in bytes of all busy (in-use) chunks stored on disk",
@@ -917,8 +917,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 65
+            "x": 12,
+            "y": 26
           },
           "title": "FluentBit Input Plugin Memory Overlimit",
           "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
@@ -947,7 +947,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 57
+            "y": 48
           },
           "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
           "description": "Shows memory and filesystem chunk usage per pod",
