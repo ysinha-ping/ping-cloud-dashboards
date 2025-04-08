@@ -879,7 +879,7 @@ spec:
             "x": 12,
             "y": 50
           },
-          "title": "Disk Buffer (Filesystem) Usage in Bytes",
+          "title": "FluentBit Disk Buffer (Filesystem) Usage in Bytes",
           "description": "The total size in bytes of all busy (in-use) chunks stored on disk",
           "type": "timeseries",
           "datasource": {
