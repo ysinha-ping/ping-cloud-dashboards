@@ -5,7 +5,7 @@
 - Fix Grafana cluster autoscaler dashboard
 - Fix Grafana karpenter capacity dashboard
 - Fix Grafana ETCD DB Size view in Kubernetes API Server Performance dashboard
-- Remove 'container network I/O' graphs on Kubernetes Dashboard as its data is identical to 'Pods network I/O' graph panel
+- Remove 'container network I/O' graphs on Kubernetes Cluster Monitoring Dashboard as its data is identical to 'Pods network I/O' graph panel
 
 _Changes_
 
