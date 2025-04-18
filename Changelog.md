@@ -1,5 +1,13 @@
 # Changelog
 
+### 2.1.0.0
+
+- Remove 'container network I/O' graphs on Kubernetes Cluster Monitoring Dashboard as its data is identical to 'Pods network I/O' graph panel
+
+_Changes_
+
+-[X] PDO-9524 Grafana: 'Pods network I/O' and 'container network I/O' graphs on Kubernetes Cluster Monitoring dashboard are identical
+
 ### 2.0.0.0
 
 - Fix Grafana cluster autoscaler dashboard
