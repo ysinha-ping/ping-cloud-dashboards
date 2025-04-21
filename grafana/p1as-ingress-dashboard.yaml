@@ -725,14 +725,14 @@ spec:
               "type": "prometheus",
               "uid": "P1809F7CD0C75ACF3"
             },
-            "definition": "label_values(kube_ingress_info,ingress)",
+            "definition": "label_values(nginx_ingress_controller_requests,ingress)",
             "hide": 0,
             "includeAll": false,
             "multi": false,
             "name": "ingressName",
             "options": [],
             "query": {
-              "query": "label_values(kube_ingress_info,ingress)",
+              "query": "label_values(nginx_ingress_controller_requests,ingress)",
               "refId": "prometheus-ingressName-Variable-Query"
             },
             "refresh": 1,
