@@ -1,18 +1,24 @@
 # Changelog
 
+### 2.0.1.0
+
+- Remove 'container network I/O' graphs on Kubernetes Cluster Monitoring Dashboard as its data is identical to 'Pods network I/O' graph panel
+
+_Changes_
+
+- [X] PDO-9524 Grafana: 'Pods network I/O' and 'container network I/O' graphs on Kubernetes Cluster Monitoring dashboard are identical
+
 ### 2.0.0.0
 
 - Fix Grafana cluster autoscaler dashboard
 - Fix Grafana karpenter capacity dashboard
 - Fix Grafana ETCD DB Size view in Kubernetes API Server Performance dashboard
-- Remove 'container network I/O' graphs on Kubernetes Cluster Monitoring Dashboard as its data is identical to 'Pods network I/O' graph panel
 
 _Changes_
 
 - [X] PDO-7517 Cluster name filter is absent for 'Number of unscheduled pods' graph
 - [X] PDO-7546 Additional columns are added to Nodepool table Karpenter Capacity dashboard
 - [X] PDO-8942 Grafana: Fix 'ETCD DB Size' Dashboard
-- [X] PDO-9524 Grafana: 'Pods network I/O' and 'container network I/O' graphs on Kubernetes Cluster Monitoring dashboard are identical
 
 ### 1.19.0.0
 
