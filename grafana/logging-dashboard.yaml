@@ -766,8 +766,8 @@ spec:
             "x": 12,
             "y": 34
           },
-          "title": "Fluentbit Memory Usage (%)",
-          "description": "FluentBit's Memory utilization in percentage",
+          "title": "Fluent Bit Memory Usage (% of Limit)",
+          "description": "Shows Fluent Bit memory usage as a percentage of the container's memory limit, grouped by pod",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -780,8 +780,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "(sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) / sum(machine_memory_bytes)) * 100",
-              "legendFormat": "Memory Usage %",
+              "expr": "sort_desc((sum(container_memory_working_set_bytes{container="fluent-bit"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource="memory", container="fluent-bit"}) by (container, pod)) * 100)",
+              "legendFormat": "{{pod}} - CPU %",
               "range": true,
               "instant": false,
               "editorMode": "code"
@@ -808,8 +808,8 @@ spec:
             "x": 0,
             "y": 32
           },
-          "title": "Fluentbit CPU Usage (%)",
-          "description": "FluentBit's CPU utilization in percentage",
+          "title": "Fluent Bit CPU Usage (% of Limit)",
+          "description": "Shows Fluent Bit CPU usage as a percentage of the container's CPU limit, grouped by pod.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -822,8 +822,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[1m])) * 100",
-              "legendFormat": "CPU usage %",
+              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container="fluent-bit"}[5m])) by (container, pod) / sum(kube_pod_container_resource_limits{resource="cpu", container="fluent-bit"}) by (container, pod)) * 100)",
+              "legendFormat": "{{pod}} - CPU %",
               "range": true,
               "instant": false,
               "editorMode": "code"
@@ -850,8 +850,8 @@ spec:
             "x": 12,
             "y": 42
           },
-          "title": "FluentBit In-Memory Buffer Usage Bytes",
-          "description": "Displays the total size of logs currently buffered in memory across all Fluent Bit input plugins.",
+          "title": "Fluent Bit In-Memory Buffer Usage (MB)",
+          "description": "Displays the total amount of log data (in MB) currently held in memory across all Fluent Bit input plugins.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -864,8 +864,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_input_storage_memory_bytes)",
-              "legendFormat": "Total In-Memory Buffer (Bytes)",
+              "expr": "sum(fluentbit_input_storage_memory_bytes) / 1024 / 1024",
+              "legendFormat": "Total In-Memory Buffer (MB)",
               "range": true,
               "editorMode": "code"
             }
@@ -879,8 +879,8 @@ spec:
             "x": 12,
             "y": 50
           },
-          "title": "FluentBit Disk Buffer (Filesystem) Usage in Bytes",
-          "description": "The total size in bytes of all busy (in-use) chunks stored on disk",
+          "title": "Fluent Bit Disk Buffer Usage (MB)",
+          "description": "Displays the total size of all busy (in-use) chunks written to disk by Fluent Bit's input plugins, in megabytes.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -893,8 +893,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_input_storage_chunks_busy_bytes)",
-              "legendFormat": "Total Filesystem Buffer (Bytes)",
+              "expr": "sum(fluentbit_input_storage_chunks_busy_bytes) / 1024 / 1024",
+              "legendFormat": "Disk Buffer (MB)",
               "range": true,
               "editorMode": "code"
             }
@@ -949,8 +949,8 @@ spec:
             "x": 0,
             "y": 48
           },
-          "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
-          "description": "Shows memory and filesystem chunk usage per pod",
+          "title": "FluentBit Chunk Distribution: In-Memory vs On-Disk (Filesystem)",
+          "description": "Tracks how Fluent Bit distributes log chunks between memory and disk. In-Memory = fs_chunks_up, On-Disk = fs_chunks_down, Total = both combined.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -963,8 +963,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_storage_mem_chunks) by (pod)",
-              "legendFormat": "Memory Chunks",
+              "expr": "sum(fluentbit_storage_fs_chunks_up) by (instance)",
+              "legendFormat": "In-Memory Chunks - {{instance}}",
               "range": true,
               "editorMode": "code"
             },
@@ -974,11 +974,22 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_storage_fs_chunks) by (pod)",
-              "legendFormat": "Filesystem Chunks",
+              "expr": "sum(fluentbit_storage_fs_chunks) by (instance)",
+              "legendFormat": "Total FS Chunks - {{instance}}",
               "range": true,
               "editorMode": "code"
-            }            
+            },
+            {
+              "refId": "C",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(fluentbit_storage_fs_chunks_down) by (instance)",
+              "legendFormat": "On-Disk Chunks - {{instance}}",
+              "range": true,
+              "editorMode": "code"
+            }               
           ],
           "fieldConfig": {
             "defaults": {
