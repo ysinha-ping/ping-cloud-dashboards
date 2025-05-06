@@ -848,10 +848,10 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 42
+            "y": 40
           },
-          "title": "FluentBit In-Memory Buffer Usage Bytes",
-          "description": "Displays the total size of logs currently buffered in memory across all Fluent Bit input plugins.",
+          "title": "FluentBit In-Memory Buffer Usage (MB)",
+          "description": "Displays the total size (in MB) of logs currently buffered in memory across all Fluent Bit input plugins.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -864,8 +864,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_input_storage_memory_bytes)",
-              "legendFormat": "Total In-Memory Buffer (Bytes)",
+              "expr": "sum(fluentbit_input_storage_memory_bytes) / 1024 / 1024",
+              "legendFormat": "In-Memory Buffer (MB)",
               "range": true,
               "editorMode": "code"
             }
