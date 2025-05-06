@@ -1119,177 +1119,125 @@ spec:
             }
           },
           {
-            "id": 15,
-            "gridPos": {
-              "h": 8,
-              "w": 12,
-              "x": 0,
-              "y": 48
-            },
-            "title": "Fluent Bit Chunk Lifecycle: In-Memory, On-Disk, Total",
-            "description": "Tracks how Fluent Bit distributes log chunks between memory and disk. In-Memory = fs_chunks_up, On-Disk = fs_chunks_down, Total = both combined.",
-            "type": "timeseries",
-            "pluginVersion": "10.1.0",
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P1809F7CD0C75ACF3"
-            },
-            "targets": [
-              {
-                "refId": "A",
-                "expr": "sum(fluentbit_storage_fs_chunks_up) by (instance)",
-                "legendFormat": "In-Memory Chunks - {{instance}}",
-                "range": true,
-                "editorMode": "code",
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P1809F7CD0C75ACF3"
-                }
-              },
-              {
-                "refId": "B",
-                "expr": "sum(fluentbit_storage_fs_chunks) by (instance)",
-                "legendFormat": "Total Chunks (Memory + On-Disk) - {{instance}}",
-                "range": true,
-                "editorMode": "code",
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P1809F7CD0C75ACF3"
-                }
-              },
-              {
-                "refId": "C",
-                "expr": "sum(fluentbit_storage_fs_chunks_down) by (instance)",
-                "legendFormat": "On-Disk Chunks - {{instance}}",
-                "range": true,
-                "instant": false,
-                "hide": false,
-                "editorMode": "code",
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P1809F7CD0C75ACF3"
-                }
-              }
-            ],
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 80
-                    }
-                  ]
-                },
-                "custom": {
-                  "drawStyle": "line",
-                  "lineInterpolation": "linear",
-                  "barAlignment": 0,
-                  "lineWidth": 1,
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "spanNulls": false,
-                  "insertNulls": false,
-                  "showPoints": "auto",
-                  "pointSize": 5,
-                  "stacking": {
-                    "mode": "none",
-                    "group": "A"
-                  },
-                  "axisPlacement": "auto",
-                  "axisLabel": "",
-                  "axisColorMode": "text",
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "axisCenteredZero": false,
-                  "hideFrom": {
-                    "tooltip": false,
-                    "viz": false,
-                    "legend": false
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                }
-              },
-              "overrides": []
-            },
-            "options": {
-              "reduceOptions": {
-                "calcs": ["lastNotNull"],
-                "fields": "",
-                "values": false
-              },
-              "orientation": "auto",
-              "textMode": "auto",
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "legend": {
-                "showLegend": true,
-                "displayMode": "list",
-                "placement": "bottom",
-                "calcs": []
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            }
-          }
-        ],
-        "refresh": "1m",
-        "schemaVersion": 37,
-        "style": "dark",
-        "tags": [],
-        "templating": {
-          "list": [
+          "id": 15,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 48
+          },
+          "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
+          "description": "Shows memory and filesystem chunk usage per pod",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
             {
-              "allValue": ".*",
-              "current": {
-                "selected": false,
-                "text": "All",
-                "value": "$__all"
-              },
+              "refId": "A",
               "datasource": {
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "definition": "label_values(k8s_cluster_name)",
-              "hide": 0,
-              "includeAll": true,
-              "multi": false,
-              "name": "cluster_name",
-              "options": [],
-              "query": {
-                "query": "label_values(k8s_cluster_name)",
-                "refId": "StandardVariableQuery"
+              "expr": "sum(fluentbit_storage_mem_chunks) by (pod)",
+              "legendFormat": "Memory Chunks",
+              "range": true,
+              "editorMode": "code"
+            },
+            {
+              "refId": "B",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
               },
-              "refresh": 1,
-              "regex": "",
-              "skipUrlSync": false,
-              "sort": 0,
-              "type": "query"
-            }
-          ]
-        },
-        "time": {
-          "from": "now-30m",
-          "to": "now"
-        },
-        "timepicker": {},
-        "timezone": "",
-        "title": "Logging metrics",
-        "uid": "5RHno_aVz",
-        "version": 1,
-        "weekStart": ""
-      }
+              "expr": "sum(fluentbit_storage_fs_chunks) by (pod)",
+              "legendFormat": "Filesystem Chunks",
+              "range": true,
+              "editorMode": "code"
+            }            
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "orientation": "auto",
+            "textMode": "auto",
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto"
+          },
+          "pluginVersion": "10.1.0"
+        }
+      ],
+      "refresh": "1m",
+      "schemaVersion": 37,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": [
+          {
+            "allValue": ".*",
+            "current": {
+              "selected": false,
+              "text": "All",
+              "value": "$__all"
+            },
+            "datasource": {
+              "type": "prometheus",
+              "uid": "P1809F7CD0C75ACF3"
+            },
+            "definition": "label_values(k8s_cluster_name)",
+            "hide": 0,
+            "includeAll": true,
+            "multi": false,
+            "name": "cluster_name",
+            "options": [],
+            "query": {
+              "query": "label_values(k8s_cluster_name)",
+              "refId": "StandardVariableQuery"
+            },
+            "refresh": 1,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 0,
+            "type": "query"
+          }
+        ]
+      },
+      "time": {
+        "from": "now-30m",
+        "to": "now"
+      },
+      "timepicker": {},
+      "timezone": "",
+      "title": "Logging metrics",
+      "uid": "5RHno_aVz",
+      "version": 1,
+      "weekStart": ""
+    }
