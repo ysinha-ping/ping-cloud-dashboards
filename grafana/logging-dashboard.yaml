@@ -769,10 +769,9 @@ spec:
           "title": "Fluent Bit Memory Usage (% of Limit)",
           "description": "Shows Fluent Bit memory usage as a percentage of the container's memory limit, grouped by pod.",
           "type": "timeseries",
-          "pluginVersion": "10.1.0",
           "datasource": {
-            "uid": "P1809F7CD0C75ACF3",
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
           },
           "targets": [
             {
@@ -784,63 +783,10 @@ spec:
               "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"memory\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - Memory %",
               "range": true,
-              "editorMode": "code",
-              "instant": false
+              "instant": false,
+              "editorMode": "code"
             }
           ],
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "custom": {
-                "drawStyle": "line",
-                "lineInterpolation": "linear",
-                "barAlignment": 0,
-                "lineWidth": 1,
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "spanNulls": false,
-                "insertNulls": false,
-                "showPoints": "auto",
-                "pointSize": 5,
-                "stacking": {
-                  "mode": "none",
-                  "group": "A"
-                },
-                "axisPlacement": "auto",
-                "axisLabel": "",
-                "axisColorMode": "text",
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "axisCenteredZero": false,
-                "hideFrom": {
-                  "tooltip": false,
-                  "viz": false,
-                  "legend": false
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": []
-            },
-            "overrides": []
-          },
           "options": {
             "tooltip": {
               "mode": "single",
@@ -865,10 +811,9 @@ spec:
           "title": "Fluent Bit CPU Usage (% of Limit)",
           "description": "Shows Fluent Bit CPU usage as a percentage of the container's CPU limit, grouped by pod.",
           "type": "timeseries",
-          "pluginVersion": "10.1.0",
           "datasource": {
-            "uid": "P1809F7CD0C75ACF3",
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
           },
           "targets": [
             {
@@ -880,63 +825,10 @@ spec:
               "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"cpu\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - CPU %",
               "range": true,
-              "editorMode": "code",
-              "instant": false
+              "instant": false,
+              "editorMode": "code"
             }
           ],
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "custom": {
-                "drawStyle": "line",
-                "lineInterpolation": "linear",
-                "barAlignment": 0,
-                "lineWidth": 1,
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "spanNulls": false,
-                "insertNulls": false,
-                "showPoints": "auto",
-                "pointSize": 5,
-                "stacking": {
-                  "mode": "none",
-                  "group": "A"
-                },
-                "axisPlacement": "auto",
-                "axisLabel": "",
-                "axisColorMode": "text",
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "axisCenteredZero": false,
-                "hideFrom": {
-                  "tooltip": false,
-                  "viz": false,
-                  "legend": false
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": []
-            },
-            "overrides": []
-          },
           "options": {
             "tooltip": {
               "mode": "multi",
@@ -956,10 +848,10 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 40
+            "y": 42
           },
-          "title": "Fluent Bit In-Memory Buffer Usage (MB)",
-          "description": "Shows total size (in MB) of log chunks currently buffered in memory by Fluent Bit input plugins.",
+          "title": "FluentBit In-Memory Buffer Usage Bytes",
+          "description": "Displays the total size of logs currently buffered in memory across all Fluent Bit input plugins.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -972,8 +864,8 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_input_storage_memory_bytes) / 1024 / 1024",
-              "legendFormat": "In-Memory Buffer - Total (MB)",
+              "expr": "sum(fluentbit_input_storage_memory_bytes)",
+              "legendFormat": "Total In-Memory Buffer (Bytes)",
               "range": true,
               "editorMode": "code"
             }
@@ -1002,64 +894,11 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(fluentbit_input_storage_chunks_busy_bytes) / 1024 / 1024",
-              "legendFormat": "Disk Buffer - Total (MB)",
+              "legendFormat": "Total Disk Buffer (MB)",
               "range": true,
               "editorMode": "code"
             }
           ],
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "custom": {
-                "drawStyle": "line",
-                "lineInterpolation": "linear",
-                "barAlignment": 0,
-                "lineWidth": 1,
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "spanNulls": false,
-                "insertNulls": false,
-                "showPoints": "auto",
-                "pointSize": 5,
-                "stacking": {
-                  "mode": "none",
-                  "group": "A"
-                },
-                "axisPlacement": "auto",
-                "axisLabel": "",
-                "axisColorMode": "text",
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "axisCenteredZero": false,
-                "hideFrom": {
-                  "tooltip": false,
-                  "viz": false,
-                  "legend": false
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": []
-            },
-            "overrides": []
-          },
           "options": {
             "tooltip": {
               "mode": "single",
@@ -1071,63 +910,18 @@ spec:
               "placement": "bottom",
               "calcs": []
             }
-          },
-          {
-            "id": 17,
-            "gridPos": {
-              "h": 8,
-              "w": 12,
-              "x": 12,
-              "y": 26
-            },
-            "title": "FluentBit Input Plugin Memory Overlimit",
-            "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
-            "type": "timeseries",
-            "pluginVersion": "10.1.0",
-            "datasource": {
-              "type": "prometheus",
-              "uid": "P1809F7CD0C75ACF3"
-            },
-            "targets": [
-              {
-                "refId": "A",
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "P1809F7CD0C75ACF3"
-                },
-                "expr": "sum(fluentbit_input_storage_overlimit) by (pod, name)",
-                "legendFormat": "Overlimit: {{name}}",
-                "range": true,
-                "editorMode": "code"
-              }
-            ],
-            "fieldConfig": {
-              "defaults": {},
-              "overrides": []
-            },
-            "options": {
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              },
-              "legend": {
-                "showLegend": true,
-                "displayMode": "list",
-                "placement": "bottom",
-                "calcs": []
-              }
-            }
-          },
-          {
-          "id": 15,
+          }
+        },
+        {
+          "id": 17,
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 48
+            "x": 12,
+            "y": 26
           },
-          "title": "FluentBit Chunk Distribution (Memory vs Filesystem)",
-          "description": "Shows memory and filesystem chunk usage per pod",
+          "title": "FluentBit Input Plugin Memory Overlimit",
+          "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -1140,8 +934,37 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_storage_mem_chunks) by (pod)",
-              "legendFormat": "Memory Chunks",
+              "expr": "sum(fluentbit_input_storage_overlimit) by (pod, name)",
+              "legendFormat": "Overlimit: {{name}}",
+              "range": true,
+              "editorMode": "code"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 48
+          },
+          "title": "Fluent Bit Chunk distribution: In-Memory, On-Disk, Total",
+          "description": "Tracks how Fluent Bit distributes log chunks between memory and disk.",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(fluentbit_storage_fs_chunks_up) by (instance)",
+              "legendFormat": "In-Memory Chunks - {{instance}}",
               "range": true,
               "editorMode": "code"
             },
@@ -1151,9 +974,22 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sum(fluentbit_storage_fs_chunks) by (pod)",
-              "legendFormat": "Filesystem Chunks",
+              "expr": "sum(fluentbit_storage_fs_chunks) by (instance)",
+              "legendFormat": "Total Chunks (Memory + On-Disk) - {{instance}}",
               "range": true,
+              "editorMode": "code"
+            },
+            {
+              "refId": "C",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(fluentbit_storage_fs_chunks_down) by (instance)",
+              "legendFormat": "On-Disk Chunks - {{instance}}",
+              "range": true,
+              "instant": false,
+              "hide": false,
               "editorMode": "code"
             }            
           ],
