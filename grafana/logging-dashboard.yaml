@@ -942,6 +942,48 @@ spec:
           ]
         },
         {
+          "id": 24,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 56
+          },
+          "title": "Fluent Bit Input Ingestion Paused Status",
+          "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance. 1 = paused, 0 = active.",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(fluentbit_input_ingestion_paused) by (instance)",
+              "legendFormat": "Paused - {{instance}}",
+              "range": true,
+              "instant": false,
+              "editorMode": "code"
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
+        },
+        {
           "id": 15,
           "gridPos": {
             "h": 8,
