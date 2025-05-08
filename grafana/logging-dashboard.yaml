@@ -100,7 +100,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 16
+            "y": 24
           },
           "id": 10,
           "interval": "1m",
@@ -199,7 +199,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 18
+            "y": 24
           },
           "id": 12,
           "interval": "1m",
@@ -297,7 +297,7 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 12,
+            "x": 8,
             "y": 0
           },
           "id": 2,
@@ -486,7 +486,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 0
+            "y": 16
           },
           "id": 6,
           "options": {
@@ -1002,7 +1002,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 26
+            "y": 16
           },
           "title": "FluentBit Input Plugin Memory Overlimit",
           "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
