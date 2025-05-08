@@ -1002,7 +1002,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 16
+            "y": 32
           },
           "title": "FluentBit Input Plugin Memory Overlimit",
           "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
