@@ -691,6 +691,90 @@ spec:
           }
         },
         {
+          "id": 24,
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "title": "Logstash CPU Usage (% of Limit)",
+          "description": "Shows Logstash CPU usage as a percentage of the container's CPU limit, grouped by pod.",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"logstash\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"cpu\", container=\"logstash\"}) by (container, pod)) * 100)",
+              "legendFormat": "{{pod}} - CPU %",
+              "range": true,
+              "instant": false,
+              "editorMode": "code",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              }
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
+        },
+        {
+          "id": 25,
+          "gridPos": {
+            "x": 12,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "title": "Logstash Memory Usage (% of Limit)",
+          "description": "Shows Logstash memory usage as a percentage of the container's memory limit, grouped by pod.",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"logstash\"}) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"memory\", container=\"logstash\"}) by (container, pod)) * 100)",
+              "legendFormat": "{{pod}} - Memory %",
+              "range": true,
+              "instant": false,
+              "editorMode": "code",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              }
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
+        },
+        {
           "id": 21,
           "gridPos": {
             "h": 8,
@@ -780,7 +864,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"memory\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"memory\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - Memory %",
               "range": true,
               "instant": false,
@@ -822,7 +906,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"cpu\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"cpu\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - CPU %",
               "range": true,
               "instant": false,
