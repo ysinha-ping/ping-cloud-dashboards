@@ -298,7 +298,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 8
+            "y": 16
           },
           "id": 2,
           "interval": "1m",
@@ -392,7 +392,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 8
+            "y": 16
           },
           "id": 4,
           "interval": "1m",
@@ -486,7 +486,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 16
+            "y": 32
           },
           "id": 6,
           "options": {
@@ -578,8 +578,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 0,
-            "y": 16
+            "x": 12,
+            "y": 0
           },
           "id": 8,
           "options": {
@@ -628,7 +628,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 24
+            "y": 32
           },
           "title": "FluentBit Input vs Output & Data Volume",
           "description": "Tracks FluentBit’s end-to-end log processing — from records ingested to records delivered, along with the volume of outgoing log data.\n\nMismatch between record rate and byte rate – High records/sec with low KB/sec may indicate malformed or empty logs.\n\nFlat lines – FluentBit may be stalled, misconfigured, or not ingesting logs.\n\nSudden spikes or drops – Possible log bursts, restarts, or downstream issues.",
@@ -694,7 +694,7 @@ spec:
           "id": 24,
           "gridPos": {
             "x": 0,
-            "y": 0,
+            "y": 8,
             "w": 12,
             "h": 8
           },
@@ -736,7 +736,7 @@ spec:
           "id": 25,
           "gridPos": {
             "x": 12,
-            "y": 0,
+            "y": 8,
             "w": 12,
             "h": 8
           },
@@ -780,7 +780,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 40
+            "y": 48
           },
           "title": "FluentBit Output Issues (Errors, Drops, Retries)",
           "description": "Detects issues in FluentBit output processing such as plugin errors, dropped records and retry storms.",
@@ -848,7 +848,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 32
+            "y": 40
           },
           "title": "Fluent Bit Memory Usage (% of Limit)",
           "description": "Shows Fluent Bit memory usage as a percentage of the container's memory limit, grouped by pod.",
@@ -885,12 +885,54 @@ spec:
           }
         },
         {
+          "id": 27,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 0
+          },
+          "title": "Logstash Nodes Up Count",
+          "description": "Displays the total number of active Logstash nodes reporting as Up",
+          "type": "timeseries",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(logstash_node_up)",
+              "legendFormat": "Total Up Nodes",
+              "range": true,
+              "instant": false,
+              "editorMode": "code"
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
+        },
+        {
           "id": 19,
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 32
+            "y": 40
           },
           "title": "Fluent Bit CPU Usage (% of Limit)",
           "description": "Shows Fluent Bit CPU usage as a percentage of the container's CPU limit, grouped by pod.",
@@ -931,8 +973,8 @@ spec:
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 12,
-            "y": 40
+            "x": 0,
+            "y": 56
           },
           "title": "FluentBit In-Memory Buffer Usage (MB)",
           "description": "Displays the total size (in MB) of logs currently buffered in memory across all Fluent Bit input plugins.",
@@ -961,7 +1003,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 48
+            "y": 56
           },
           "title": "Fluent Bit Disk Buffer Usage (MB)",
           "description": "Shows total size (in MB) of busy chunks written to disk by Fluent Bit input plugins.",
@@ -1002,7 +1044,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 32
+            "y": 48
           },
           "title": "FluentBit Input Plugin Memory Overlimit",
           "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
@@ -1031,7 +1073,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 56
+            "y": 64
           },
           "title": "Fluent Bit Input Ingestion Paused Status",
           "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance. 1 = paused, 0 = active.",
@@ -1073,7 +1115,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 48
+            "y": 64
           },
           "title": "Fluent Bit Chunk distribution: In-Memory, On-Disk, Total",
           "description": "Tracks how Fluent Bit distributes log chunks between memory and disk.",
