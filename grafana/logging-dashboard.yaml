@@ -645,7 +645,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(rate(fluentbit_input_records_total[5m]))",
-              "legendFormat": "Input Records/sec",
+              "legendFormat": "Input Records",
               "range": true,
               "instant": false,
               "editorMode": "code"
@@ -657,7 +657,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(rate(fluentbit_output_proc_records_total[5m]))",
-              "legendFormat": "Output Records/sec",
+              "legendFormat": "Output Records",
               "range": true,
               "instant": false,
               "editorMode": "code",
@@ -1063,7 +1063,7 @@ spec:
             "y": 64
           },
           "title": "Fluent Bit Input Ingestion Paused Status",
-          "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance.(Greater than 1 = paused, 0 = active.)",
+          "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance.(Greater than 0 = paused, 0 = active.)",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
