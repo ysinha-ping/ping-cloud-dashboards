@@ -662,19 +662,6 @@ spec:
               "instant": false,
               "editorMode": "code",
               "hide": false
-            },
-            {
-              "refId": "C",
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
-              "expr": "sum(rate(fluentbit_output_proc_bytes_total[5m])) / 1024",
-              "legendFormat": "Output KB/sec",
-              "range": true,
-              "instant": false,
-              "editorMode": "code",
-              "hide": false
             }
           ],
           "options": {
@@ -708,7 +695,7 @@ spec:
           "targets": [
             {
               "refId": "A",
-              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"logstash\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"cpu\", container=\"logstash\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"logstash\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"cpu\", container=\"logstash\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - CPU %",
               "range": true,
               "instant": false,
@@ -750,7 +737,7 @@ spec:
           "targets": [
             {
               "refId": "A",
-              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"logstash\"}) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"memory\", container=\"logstash\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"logstash\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"memory\", container=\"logstash\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - Memory %",
               "range": true,
               "instant": false,
@@ -797,7 +784,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(rate(fluentbit_output_retries_total[5m]))",
-              "legendFormat": "Retries/sec",
+              "legendFormat": "Retries",
               "range": true,
               "instant": false,
               "editorMode": "code"
@@ -809,7 +796,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(rate(fluentbit_output_errors_total[5m]))",
-              "legendFormat": "Errors/sec",
+              "legendFormat": "Errors",
               "range": true,
               "instant": false,
               "editorMode": "code",
@@ -822,7 +809,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "expr": "sum(rate(fluentbit_output_dropped_records_total[5m]))",
-              "legendFormat": "Dropped Records/sec",
+              "legendFormat": "Dropped Records",
               "range": true,
               "instant": false,
               "editorMode": "code",
@@ -864,7 +851,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"memory\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"memory\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - Memory %",
               "range": true,
               "instant": false,
@@ -948,7 +935,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_requests{resource=\"cpu\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"cpu\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
               "legendFormat": "{{pod}} - CPU %",
               "range": true,
               "instant": false,
@@ -1076,7 +1063,7 @@ spec:
             "y": 64
           },
           "title": "Fluent Bit Input Ingestion Paused Status",
-          "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance. 1 = paused, 0 = active.",
+          "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance.(Greater than 1 = paused, 0 = active.)",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -1120,6 +1107,7 @@ spec:
           "title": "Fluent Bit Chunk distribution: In-Memory, On-Disk, Total",
           "description": "Tracks how Fluent Bit distributes log chunks between memory and disk.",
           "type": "timeseries",
+          "pluginVersion": "10.1.0",
           "datasource": {
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
@@ -1127,39 +1115,39 @@ spec:
           "targets": [
             {
               "refId": "A",
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
               "expr": "sum(fluentbit_storage_fs_chunks_up) by (instance)",
               "legendFormat": "In-Memory Chunks - {{instance}}",
               "range": true,
-              "editorMode": "code"
+              "editorMode": "code",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              }
             },
             {
               "refId": "B",
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
               "expr": "sum(fluentbit_storage_fs_chunks) by (instance)",
               "legendFormat": "Total Chunks (Memory + On-Disk) - {{instance}}",
               "range": true,
-              "editorMode": "code"
-            },
-            {
-              "refId": "C",
+              "editorMode": "code",
               "datasource": {
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
-              },
+              }
+            },
+            {
+              "refId": "C",
               "expr": "sum(fluentbit_storage_fs_chunks_down) by (instance)",
               "legendFormat": "On-Disk Chunks - {{instance}}",
               "range": true,
               "instant": false,
               "hide": false,
-              "editorMode": "code"
-            }            
+              "editorMode": "code",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              }
+            }
           ],
           "fieldConfig": {
             "defaults": {
@@ -1169,34 +1157,105 @@ spec:
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
+                  { "value": null, "color": "green" },
+                  { "value": 80, "color": "red" }
+                ]
+              },
+              "custom": {
+                "drawStyle": "line",
+                "lineInterpolation": "linear",
+                "barAlignment": 0,
+                "lineWidth": 1,
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "spanNulls": false,
+                "insertNulls": false,
+                "showPoints": "auto",
+                "pointSize": 5,
+                "stacking": { "mode": "none", "group": "A" },
+                "axisPlacement": "auto",
+                "axisLabel": "",
+                "axisColorMode": "text",
+                "scaleDistribution": { "type": "linear" },
+                "axisCenteredZero": false,
+                "hideFrom": {
+                  "tooltip": false,
+                  "viz": false,
+                  "legend": false
+                },
+                "thresholdsStyle": { "mode": "off" }
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": "^In-Memory Chunks.*"
+                },
+                "properties": [
                   {
-                    "color": "green",
-                    "value": null
-                  },
+                    "id": "color",
+                    "value": {
+                      "mode": "fixed",
+                      "fixedColor": "light-yellow"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": "^On-Disk Chunks.*"
+                },
+                "properties": [
                   {
-                    "color": "red",
-                    "value": 80
+                    "id": "color",
+                    "value": {
+                      "mode": "fixed",
+                      "fixedColor": "semi-dark-green"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": "^Total Chunks.*"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "mode": "fixed",
+                      "fixedColor": "dark-red"
+                    }
                   }
                 ]
               }
-            },
-            "overrides": []
+            ]
           },
           "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            },
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
             "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
+              "calcs": ["lastNotNull"],
               "fields": "",
               "values": false
             },
-            "orientation": "auto",
-            "textMode": "auto",
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto"
-          },
-          "pluginVersion": "10.1.0"
+            "textMode": "auto"
+          }
         }
       ],
       "refresh": "1m",
