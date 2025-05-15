@@ -630,8 +630,8 @@ spec:
             "x": 0,
             "y": 32
           },
-          "title": "FluentBit Input vs Output & Data Volume",
-          "description": "Tracks FluentBit’s end-to-end log processing — from records ingested to records delivered, along with the volume of outgoing log data.\n\nMismatch between record rate and byte rate – High records/sec with low KB/sec may indicate malformed or empty logs.\n\nFlat lines – FluentBit may be stalled, misconfigured, or not ingesting logs.\n\nSudden spikes or drops – Possible log bursts, restarts, or downstream issues.",
+          "title": "Fluent Bit Input vs Output Record Rate",
+          "description": "Tracks FluentBit’s end-to-end log processing — from records ingested to records delivered.,
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
