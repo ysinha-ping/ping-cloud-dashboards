@@ -630,7 +630,7 @@ spec:
             "x": 0,
             "y": 32
           },
-          "title": "Fluent Bit Input vs Output Record Rate",
+          "title": "FluentBit Input vs Output Record Rate",
           "description": "Tracks FluentBit’s end-to-end log processing — from records ingested to records delivered.,
           "type": "timeseries",
           "datasource": {
@@ -837,8 +837,8 @@ spec:
             "x": 12,
             "y": 40
           },
-          "title": "Fluent Bit Memory Usage (% of Limit)",
-          "description": "Shows Fluent Bit memory usage as a percentage of the container's memory limit, grouped by pod.",
+          "title": "FluentBit Memory Usage (% of Limit)",
+          "description": "Shows FluentBit memory usage as a percentage of the container's memory limit, grouped by pod.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -921,8 +921,8 @@ spec:
             "x": 0,
             "y": 40
           },
-          "title": "Fluent Bit CPU Usage (% of Limit)",
-          "description": "Shows Fluent Bit CPU usage as a percentage of the container's CPU limit, grouped by pod.",
+          "title": "FluentBit CPU Usage (% of Limit)",
+          "description": "Shows FluentBit CPU usage as a percentage of the container's CPU limit, grouped by pod.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -964,7 +964,7 @@ spec:
             "y": 56
           },
           "title": "FluentBit In-Memory Buffer Usage (MB)",
-          "description": "Displays the total size (in MB) of logs currently buffered in memory across all Fluent Bit input plugins.",
+          "description": "Displays the total size (in MB) of logs currently buffered in memory across all FluentBit input plugins.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -992,8 +992,8 @@ spec:
             "x": 12,
             "y": 56
           },
-          "title": "Fluent Bit Disk Buffer Usage (MB)",
-          "description": "Shows total size (in MB) of busy chunks written to disk by Fluent Bit input plugins.",
+          "title": "FluentBit Disk Buffer Usage (MB)",
+          "description": "Shows total size (in MB) of busy chunks written to disk by FluentBit input plugins.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -1034,7 +1034,7 @@ spec:
             "y": 48
           },
           "title": "FluentBit Input Plugin Memory Overlimit",
-          "description": "Displays which Fluent Bit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
+          "description": "Displays which FluentBit input plugins are currently over the memory buffer limit. A flatline means all are correctly under the memory limit.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -1062,8 +1062,8 @@ spec:
             "x": 12,
             "y": 64
           },
-          "title": "Fluent Bit Input Ingestion Paused Status",
-          "description": "Indicates whether Fluent Bit input ingestion is currently paused per instance.(Greater than 0 = paused, 0 = active.)",
+          "title": "FluentBit Input Ingestion Paused Status",
+          "description": "Indicates whether FluentBit input ingestion is currently paused per instance.(Greater than 0 = paused, 0 = active.)",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -1104,8 +1104,8 @@ spec:
             "x": 0,
             "y": 64
           },
-          "title": "Fluent Bit Chunk distribution: In-Memory, On-Disk, Total",
-          "description": "Tracks how Fluent Bit distributes log chunks between memory and disk.",
+          "title": "FluentBit Chunk distribution: In-Memory, On-Disk, Total",
+          "description": "Tracks how FluentBit distributes log chunks between memory and disk.",
           "type": "timeseries",
           "pluginVersion": "10.1.0",
           "datasource": {
