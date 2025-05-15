@@ -1157,8 +1157,8 @@ spec:
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
-                  { "value": null, "color": "green" },
-                  { "value": 80, "color": "red" }
+                  { "color": "green", "value": null },
+                  { "color": "red", "value": 80 }
                 ]
               },
               "custom": {
@@ -1227,7 +1227,7 @@ spec:
                     "id": "color",
                     "value": {
                       "mode": "fixed",
-                      "fixedColor": "dark-red"
+                      "fixedColor": "semi-dark-blue"
                     }
                   }
                 ]
@@ -1241,8 +1241,8 @@ spec:
             },
             "legend": {
               "showLegend": true,
-              "displayMode": "list",
-              "placement": "bottom",
+              "displayMode": "table",
+              "placement": "right",
               "calcs": []
             },
             "colorMode": "value",
