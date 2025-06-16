@@ -1277,7 +1277,7 @@ spec:
             },
             "definition": "label_values(k8s_cluster_name)",
             "hide": 0,
-            "includeAll": true,
+            "includeAll": false,
             "multi": false,
             "name": "cluster_name",
             "options": [],
