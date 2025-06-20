@@ -123,7 +123,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "sum(increase(fluentbit_input_records_total{k8s_cluster_name=~"$cluster_name",name=~"tail.*"}[$__rate_interval])) by (instance)",
+              "expr": "sum(increase(fluentbit_input_records_total{k8s_cluster_name=~\"$cluster_name\",name=~\"tail.*\"}[$__rate_interval])) by (instance)",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -222,7 +222,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "sum(increase(fluentbit_output_proc_records_total{k8s_cluster_name=~"$cluster_name"}[$__rate_interval])) by (instance)",
+              "expr": "sum(increase(fluentbit_output_proc_records_total{k8s_cluster_name=~\"$cluster_name\"}[$__rate_interval])) by (instance)",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -321,7 +321,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "builder",
-              "expr": "increase(logstash_node_pipeline_events_in_total{k8s_cluster_name=~"$cluster_name"}[$__rate_interval])",
+              "expr": "increase(logstash_node_pipeline_events_in_total{k8s_cluster_name=~\"$cluster_name\"}[$__rate_interval])",
               "legendFormat": "{{pipeline}} pipe on {{instance}}",
               "range": true,
               "refId": "A"
@@ -415,7 +415,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "builder",
-              "expr": "increase(logstash_node_pipeline_events_out_total{k8s_cluster_name=~"$cluster_name"}[$__rate_interval])",
+              "expr": "increase(logstash_node_pipeline_events_out_total{k8s_cluster_name=~\"$cluster_name\"}[$__rate_interval])",
               "legendFormat": "{{pipeline}} pipe on {{instance}}",
               "range": true,
               "refId": "A"
@@ -508,7 +508,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "builder",
-              "expr": "logstash_node_queue_events{k8s_cluster_name=~"$cluster_name"}",
+              "expr": "logstash_node_queue_events{k8s_cluster_name=~\"$cluster_name\"}",
               "legendFormat": "{{pipeline}} on {{instance}}",
               "range": true,
               "refId": "A"
@@ -601,7 +601,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "builder",
-              "expr": "logstash_node_mem_heap_max_bytes{k8s_cluster_name=~"$cluster_name"}",
+              "expr": "logstash_node_mem_heap_max_bytes{k8s_cluster_name=~\"$cluster_name\"}",
               "legendFormat": "Heap max on {{instance}}",
               "range": true,
               "refId": "A"
