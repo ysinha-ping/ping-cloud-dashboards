@@ -123,7 +123,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "sum(increase(fluentbit_input_records_total{k8s_cluster_name=~\"$cluster_name\",name=~\"tail.*\"}[$__rate_interval])) by (instance)",
+              "expr": "sum(increase(fluentbit_input_records_total{k8s_cluster_name=~"$cluster_name",name=~"tail.*"}[$__rate_interval])) by (instance)",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
