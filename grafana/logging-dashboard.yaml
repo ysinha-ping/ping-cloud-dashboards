@@ -1114,7 +1114,7 @@ spec:
           "targets": [
             {
               "refId": "A",
-              "expr": "sum(fluentbit_output_chunk_available_capacity_percent{k8s_cluster_name=~\"$cluster_name\"}) by (instance, name)",
+              "expr": "sum(fluentbit_output_chunk_available_capacity_percent{k8s_cluster_name=~"$cluster_name"}) by (instance, name)",
               "legendFormat": "{{instance}} - {{name}}",
               "range": true,
               "instant": false,
