@@ -1057,13 +1057,13 @@ spec:
         {
           "id": 29,
           "gridPos": {
-            "x": 12,
-            "y": 72,
+            "h": 8,
             "w": 12,
-            "h": 8
+            "x": 12,
+            "y": 72
           },
           "title": "Fluent Bit Output Chunk Available Capacity (%)",
-          "description": "Displays the current available buffer capacity (as a percentage) for each Fluent Bit output plugin, grouped by instance and plugin name.\n\nA lower percentage may indicate that output chunks are nearing capacity, which can lead to dropped records if sustained.",
+          "description": "Displays the current available buffer capacity (as a percentage) for each Fluent Bit output plugin, grouped by instance and plugin name. A lower percentage may indicate that output chunks are nearing capacity, which can lead to dropped records if sustained.",
           "type": "timeseries",
           "datasource": {
             "type": "prometheus",
@@ -1072,13 +1072,29 @@ spec:
           "targets": [
             {
               "refId": "A",
-              "expr": "sum(fluentbit_output_chunk_available_capacity_percent{k8s_cluster_name=~"$cluster_name"}) by (instance, name)",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "expr": "sum(fluentbit_output_chunk_available_capacity_percent{k8s_cluster_name=~\"$cluster_name\"}) by (instance, name)",
               "legendFormat": "{{instance}} - {{name}}",
               "range": true,
               "instant": false,
-              "editorMode": "code",
-            }  
-          ]
+              "editorMode": "code"
+            }
+          ],
+          "options": {
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            },
+            "legend": {
+              "showLegend": true,
+              "displayMode": "list",
+              "placement": "bottom",
+              "calcs": []
+            }
+          }
         },
         {
           "id": 28,
