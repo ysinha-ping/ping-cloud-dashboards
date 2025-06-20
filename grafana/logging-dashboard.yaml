@@ -508,7 +508,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "builder",
-              "expr": "logstash_node_queue_events{k8s_cluster_name=~\"$cluster_name\"}",
+              "expr": "logstash_node_queue_events{k8s_cluster_name=~"$cluster_name"}",
               "legendFormat": "{{pipeline}} on {{instance}}",
               "range": true,
               "refId": "A"
