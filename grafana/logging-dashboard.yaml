@@ -851,7 +851,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sort_desc((sum(container_memory_working_set_bytes{container="fluent-bit", k8s_cluster_name=~\"$cluster_name\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource="memory", container="fluent-bit", k8s_cluster_name=~\"$cluster_name\"}) by (container, pod)) * 100)",
+              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\\\"fluent-bit\\\", k8s_cluster_name=~\\\"$cluster_name\\\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\\\"memory\\\", container=\\\"fluent-bit\\\", k8s_cluster_name=~\\\"$cluster_name\\\"}) by (container, pod)) * 100",
               "legendFormat": "{{pod}} - Memory %",
               "range": true,
               "instant": false,
@@ -977,7 +977,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\\\"fluent-bit\\\", k8s_cluster_name=~\\\"$cluster_name\\\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\\\"memory\\\", container=\\\"fluent-bit\\\", k8s_cluster_name=~\\\"$cluster_name\\\"}) by (container, pod)) * 100)",
+              "expr": "sum(fluentbit_input_storage_memory_bytes{k8s_cluster_name=~"$cluster_name"}) by (instance, name) / 1024 / 1024",
               "legendFormat": "In-Memory Buffer (MB)",
               "range": true,
               "editorMode": "code"
