@@ -128,7 +128,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "JVM GC CPU, %",
+          "title": "JVM GC CCCCCPU, %",
           "type": "timeseries"
         },
         {
@@ -228,7 +228,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "JVM GC Old Gen (Tenured) Collected, %",
+          "title": "JVM GC OOOOOOOOOld Gen (Tenured) Collected, %",
           "type": "timeseries"
         },
         {
@@ -323,7 +323,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "Total transactions",
+          "title": "Total iiiiiiiiitransactions",
           "transformations": [
             {
               "id": "calculateField",
