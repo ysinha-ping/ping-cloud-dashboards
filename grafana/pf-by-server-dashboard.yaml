@@ -323,7 +323,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "Transaction Throughput Rate",
+          "title": "Total transactions",
           "transformations": [
             {
               "id": "calculateField",
@@ -337,7 +337,6 @@ spec:
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "description": "Average number of total (successful + failed) transactions processed by PingFederate per second, averaged over the last 5 minutes.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -425,7 +424,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "Failed Transaction Rate",
+          "title": "Total failed transactions",
           "transformations": [
             {
               "id": "calculateField",
@@ -439,7 +438,6 @@ spec:
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "description": "Average rate of failed PingFederate transactions per second over the last 5 minutes.",
           "fieldConfig": {
             "defaults": {
               "color": {
