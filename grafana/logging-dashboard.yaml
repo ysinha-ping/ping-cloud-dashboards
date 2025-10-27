@@ -129,7 +129,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "Fluent-bit incoming events per minute",
+          "title": "Fluent-bit iiiiincoming events per minute",
           "transformations": [
             {
               "id": "calculateField",
@@ -228,7 +228,7 @@ spec:
               "refId": "A"
             }
           ],
-          "title": "Fluent-bit outgoing events per minute",
+          "title": "Fluent-bit ooooooooutgoing events per minute",
           "transformations": [
             {
               "id": "calculateField",
