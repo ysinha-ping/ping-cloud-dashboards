@@ -317,7 +317,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "exemplar": true,
-              "expr": "rate(metric_pingfederate_total_transactions{k8s_cluster_name=~"~\"$cluster_name\"}[5m])",
+              "expr": "rate(metric_pingfederate_total_transactions{k8s_cluster_name=~\"$cluster_name\"}[5m])",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A",
@@ -425,7 +425,7 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "exemplar": true,
-              "expr": "rate(metric_pingfederate_total_failed_transactions{k8s_cluster_name=~"~\"$cluster_name\"}[5m])",
+              "expr": "rate(metric_pingfederate_total_failed_transactions{k8s_cluster_name=~\"$cluster_name\"}[5m])",
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A",
