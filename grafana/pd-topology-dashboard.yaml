@@ -736,6 +736,28 @@ spec:
               "interval": "",
               "legendFormat": "{{instance}}",
               "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "exemplar": true,
+              "expr": "o_appintegrations_replica_backlog{k8s_cluster_name=~\"$cluster_name\"}",
+              "interval": "",
+              "legendFormat": "appintegrations ({{instance}})",
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "exemplar": true,
+              "expr": "o_platformconfig_replica_backlog{k8s_cluster_name=~\"$cluster_name\"}",
+              "interval": "",
+              "legendFormat": "platformconfig ({{instance}})",
+              "refId": "C"
             }
           ],
           "title": "Replication Backlog",
