@@ -761,8 +761,8 @@ spec:
             }
           ],
           "title": "Replication Backlog by Backend",
-          "type": "timeseries"
-          "description": "Shows replication backlog per PingDirectory backend: userRoot (replica_backlog), appintegrations and platformconfig, grouped by pod instance."
+          "type": "timeseries",
+          "description": "Shows replication backlog per PingDirectory backend userRoot replica_backlog, appintegrations and platformconfig, grouped by pod instance."
         },
         {
           "datasource": {
