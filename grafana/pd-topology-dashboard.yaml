@@ -734,7 +734,7 @@ spec:
               "exemplar": true,
               "expr": "replica_backlog {k8s_cluster_name=~\"$cluster_name\"}",
               "interval": "",
-              "legendFormat": "{{instance}}",
+              "legendFormat": "user-base-dn ({{instance}})",
               "refId": "A"
             },
             {
