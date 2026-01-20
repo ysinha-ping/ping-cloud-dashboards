@@ -4,13 +4,13 @@
 
 - Add appintegrations to replication backlog panel in PD topology dashboard
 - Grafana: Added/Updated Description for Transformed Metrics in Grafana Dashboards
-- Openseach: Remove PingFederate Impossible Login Distance view in Opensearch Dashboards
+- Opensearch: Remove PingFederate Impossible Login Distance view in Opensearch Dashboards
 
 _Changes_
 
 - [X] PDO-10657 Grafana: Add PD backends to replication backlog dashboard
 - [X] PDO-10742 Identify and Document Transformed Metrics in Grafana Dashboards
-- [X] PDO-11030 Openseach: Remove PingFederate Impossible Login Distance view
+- [X] PDO-11030 Opensearch: Remove PingFederate Impossible Login Distance view
 
 ### 2.2.0.0
 
