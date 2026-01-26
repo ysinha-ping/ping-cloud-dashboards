@@ -21,5 +21,6 @@ configMapGenerator:
       - os-dashboard-pa-was.ndjson
 
 generatorOptions:
+ disableNameSuffixHash: true
  annotations:
    argocd.argoproj.io/sync-options: Replace=true
