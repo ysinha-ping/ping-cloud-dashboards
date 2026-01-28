@@ -728,6 +728,7 @@ spec:
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
+          "description": "\"Number of events currently buffered in each Logstash pipeline's persistent queue, grouped by instance.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -787,8 +788,7 @@ spec:
             "x": 12,
             "y": 24
           },
-          "id": 12,
-          "interval": "1m",
+          "id": 6,
           "options": {
             "legend": {
               "calcs": [],
@@ -808,19 +808,13 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "sum(increase(fluentbit_output_proc_records_total{k8s_cluster_name=~\"$cluster_name\"}[1m])) by (instance)",
-              "legendFormat": "__auto",
+              "expr": "logstash_node_queue_events{k8s_cluster_name=~\"$cluster_name\"}",
+              "legendFormat": "{{pipeline}} on {{instance}}",
               "range": true,
               "refId": "A"
             }
           ],
-          "title": "Fluent-bit outgoing events per minute",
-          "transformations": [
-            {
-              "id": "calculateField",
-              "options": {}
-            }
-          ],
+          "title": "Logstash events in queue",
           "type": "timeseries"
         },
         {
@@ -936,7 +930,6 @@ spec:
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "description": "\"Number of events currently buffered in each Logstash pipeline's persistent queue, grouped by instance.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -996,7 +989,8 @@ spec:
             "x": 12,
             "y": 32
           },
-          "id": 6,
+          "id": 12,
+          "interval": "1m",
           "options": {
             "legend": {
               "calcs": [],
@@ -1016,13 +1010,19 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "logstash_node_queue_events{k8s_cluster_name=~\"$cluster_name\"}",
-              "legendFormat": "{{pipeline}} on {{instance}}",
+              "expr": "sum(increase(fluentbit_output_proc_records_total{k8s_cluster_name=~\"$cluster_name\"}[1m])) by (instance)",
+              "legendFormat": "__auto",
               "range": true,
               "refId": "A"
             }
           ],
-          "title": "Logstash events in queue",
+          "title": "Fluent-bit outgoing events per minute",
+          "transformations": [
+            {
+              "id": "calculateField",
+              "options": {}
+            }
+          ],
           "type": "timeseries"
         },
         {
@@ -1125,7 +1125,7 @@ spec:
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "description": "Shows FluentBit memory usage as a percentage of the container's memory limit, grouped by pod.",
+          "description": "Shows FluentBit CPU usage as a percentage of the container's CPU limit, grouped by pod.",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -1185,6 +1185,102 @@ spec:
             "x": 12,
             "y": 40
           },
+          "id": 28,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "editorMode": "code",
+              "expr": "sort_desc((sum(rate(container_cpu_usage_seconds_total{container=\"fluent-bit\"}[5m])) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"cpu\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
+              "instant": false,
+              "legendFormat": "{{pod}} - CPU %",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "FluentBit CPU Usage (% of Limit)",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "description": "Detects issues in FluentBit output processing such as plugin errors, dropped records and retry storms.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "eps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 48
+          },
           "id": 16,
           "options": {
             "legend": {
@@ -1205,14 +1301,40 @@ spec:
                 "uid": "P1809F7CD0C75ACF3"
               },
               "editorMode": "code",
-              "expr": "sort_desc((sum(container_memory_working_set_bytes{container=\"fluent-bit\"}) by (container, pod) / sum(kube_pod_container_resource_limits{resource=\"memory\", container=\"fluent-bit\"}) by (container, pod)) * 100)",
+              "expr": "sum(rate(fluentbit_output_retries_total[5m]))",
               "instant": false,
-              "legendFormat": "{{pod}} - Memory %",
+              "legendFormat": "Retries",
               "range": true,
               "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(fluentbit_output_errors_total[5m]))",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "Errors",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "editorMode": "code",
+              "expr": "sum(rate(fluentbit_output_dropped_records_total[5m]))",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "Dropped Records",
+              "range": true,
+              "refId": "C"
             }
           ],
-          "title": "FluentBit Memory Usage (% of Limit)",
+          "title": "FluentBit Output Issues (Errors, Drops, Retries)",
           "type": "timeseries"
         }
       ],
@@ -1259,6 +1381,6 @@ spec:
       "timezone": "",
       "title": "Logging metrics",
       "uid": "5RHno_aVz",
-      "version": 1,
+      "version": 3,
       "weekStart": ""
     }
