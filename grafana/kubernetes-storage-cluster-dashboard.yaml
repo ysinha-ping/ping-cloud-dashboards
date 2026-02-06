@@ -434,7 +434,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "  (\n    predict_linear((sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\\\"$k8s_cluster_name\\\"})[1d:10m]),7 * 24 * 60 * 60) \n  )",
+                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace=~\"$namespace\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
                   "format": "table",
                   "instant": true,
                   "intervalFactor": 1,
