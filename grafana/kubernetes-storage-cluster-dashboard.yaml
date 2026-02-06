@@ -419,47 +419,10 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "gridPos": {
-                "h": 14,
-                "w": 8,
-                "x": 0,
-                "y": 2
-              },
-              "id": 38,
-              "links": [],
-              "targets": [
-                {
-                  "datasource": {
-                    "type": "prometheus",
-                    "uid": "P1809F7CD0C75ACF3"
-                  },
-                  "editorMode": "code",
-                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\",namespace=~\"$namespace\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
-                  "format": "table",
-                  "instant": true,
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Infrastructure Namespace Volumes Full in Week Based on Daily Use Rate - Current",
-              "type": "table",
-              "options": {
-                "showHeader": true,
-                "cellHeight": "sm",
-                "footer": {
-                  "show": false,
-                  "reducer": [
-                    "sum"
-                  ],
-                  "countRows": false,
-                  "fields": ""
-                }
-              },
               "fieldConfig": {
                 "defaults": {
                   "custom": {
-                    "align": null,
+                    "align": "auto",
                     "cellOptions": {
                       "type": "auto"
                     },
@@ -470,21 +433,17 @@ spec:
                     "mode": "percentage",
                     "steps": [
                       {
-                        "color": "red",
+                        "color": "green",
                         "value": null
-                      },
-                      {
-                        "value": 80,
-                        "color": "green"
                       }
                     ]
                   },
-                  "unit": "short",
-                  "decimals": 2,
-                  "displayName": "",
                   "color": {
                     "mode": "thresholds"
-                  }
+                  },
+                  "decimals": 2,
+                  "displayName": "",
+                  "unit": "short"
                 },
                 "overrides": [
                   {
@@ -512,8 +471,7 @@ spec:
                         }
                       },
                       {
-                        "id": "custom.align",
-                        "value": null
+                        "id": "custom.align"
                       },
                       {
                         "id": "thresholds",
@@ -525,8 +483,8 @@ spec:
                               "value": null
                             },
                             {
-                              "value": 80,
-                              "color": "semi-dark-red"
+                              "color": "semi-dark-red",
+                              "value": 80
                             }
                           ]
                         }
@@ -552,13 +510,49 @@ spec:
                         "value": 2
                       },
                       {
-                        "id": "custom.align",
-                        "value": null
+                        "id": "custom.align"
                       }
                     ]
                   }
                 ]
               },
+              "gridPos": {
+                "h": 14,
+                "w": 8,
+                "x": 0,
+                "y": 8
+              },
+              "id": 38,
+              "links": [],
+              "options": {
+                "showHeader": true,
+                "cellHeight": "sm",
+                "footer": {
+                  "show": false,
+                  "reducer": [
+                    "sum"
+                  ],
+                  "countRows": false,
+                  "fields": ""
+                }
+              },
+              "pluginVersion": "10.1.0",
+              "targets": [
+                {
+                  "datasource": {
+                    "type": "prometheus",
+                    "uid": "P1809F7CD0C75ACF3"
+                  },
+                  "editorMode": "code",
+                  "expr": "  (\n    predict_linear((sum by (namespace,persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n  )",
+                  "format": "table",
+                  "instant": true,
+                  "intervalFactor": 1,
+                  "legendFormat": "",
+                  "refId": "A"
+                }
+              ],
+              "title": "Infrastructure Namespace Volumes Full in Week Based on Daily Use Rate - Current",
               "transformations": [
                 {
                   "id": "merge",
@@ -567,7 +561,7 @@ spec:
                   }
                 }
               ],
-              "pluginVersion": "10.1.0"
+              "type": "table"
             },
             {
               "alert": {
