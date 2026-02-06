@@ -496,7 +496,8 @@ spec:
                   "refId": "A"
                 }
               ],
-              "title": "Volumes Full in Week Based on Daily Use Rate - Current",
+              "title": "Volume Capacity Forecast - 7-Day Outlook",
+              "description": "Shows predicted available storage space for each volume in the selected namespace 7 days from now, based on recent usage trends. Use the namespace dropdown to filter results. GREEN highlights volumes with healthy capacity (below 80% usage threshold), while RED highlights volumes approaching or exceeding the 80% threshold that may require attention or expansion.",
               "transformations": [
                 {
                   "id": "merge",
@@ -587,7 +588,8 @@ spec:
                 }
               ],
               "timeRegions": [],
-              "title": "Volumes Full in Week Based on Daily Use Rate - Alert History",
+              "title": "Volume Capacity Alerts - Historical Trend",
+              "description": "Displays the historical count of volumes in the selected namespace predicted to run out of storage space within 7 days, based on daily usage rates. Each bar shows how many volumes were forecasted to become full at that point in time. The red threshold line at 1 alert indicates when capacity issues were detected. Use this trend to identify recurring capacity problems or validate if previous expansions resolved forecast alerts.",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -687,7 +689,8 @@ spec:
               ],
               "thresholds": [],
               "timeRegions": [],
-              "title": "Volumes Full in Week Based on Daily Use Rate -  Predicted Available Space History",
+              "title": "Volume Available Space Forecast - Historical Trend",
+              "description": "Shows the historical trend of predicted available storage space for each volume in the selected namespace, forecasted 7 days ahead based on daily usage patterns. Each line represents a different volume's capacity projection over time. Lines trending toward zero or crossing below indicate volumes at risk of running out of space. Use this to monitor how capacity forecasts have changed and whether storage expansions have improved projections.",
               "tooltip": {
                 "shared": true,
                 "sort": 0,
@@ -956,7 +959,8 @@ spec:
                   "refId": "D"
                 }
               ],
-              "title": "Running PVCs Above % Used Warning Threshold Stats - Current",
+              "title": "High Usage Volumes - Current Statistics",
+              "description": "Displays detailed statistics for all persistent volume claims (PVCs) currently exceeding the configured usage warning threshold in the selected namespace. Shows Used, Capacity, Free space (in bytes), percentage used, StorageClass, PV name, Namespace, PVC name, and whether volume stats are available.",
               "transform": "table",
               "type": "table-old"
             }
