@@ -415,18 +415,10 @@ spec:
           "id": 32,
           "panels": [
             {
-              "columns": [
-                {
-                  "$$hashKey": "object:247",
-                  "text": "Avg",
-                  "value": "avg"
-                }
-              ],
               "datasource": {
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
-              "fontSize": "100%",
               "gridPos": {
                 "h": 14,
                 "w": 8,
@@ -435,66 +427,6 @@ spec:
               },
               "id": 38,
               "links": [],
-              "showHeader": true,
-              "sort": {
-                "col": 0,
-                "desc": true
-              },
-              "styles": [
-                {
-                  "$$hashKey": "object:615",
-                  "alias": "Available",
-                  "align": "auto",
-                  "colorMode": "row",
-                  "colors": [
-                    "rgba(50, 172, 45, 0.97)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(245, 54, 54, 0.9)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "mappingType": 1,
-                  "pattern": "Value",
-                  "thresholds": [
-                    "0",
-                    "0"
-                  ],
-                  "type": "number",
-                  "unit": "bytes"
-                },
-                {
-                  "$$hashKey": "object:617",
-                  "alias": "PVC",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "mappingType": 1,
-                  "pattern": "persistentvolumeclaim",
-                  "thresholds": [],
-                  "type": "string",
-                  "unit": "short"
-                },
-                {
-                  "$$hashKey": "object:618",
-                  "alias": "",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "decimals": 2,
-                  "pattern": "/.*/",
-                  "thresholds": [],
-                  "type": "hidden",
-                  "unit": "short"
-                }
-              ],
               "targets": [
                 {
                   "datasource": {
@@ -502,7 +434,7 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "  (\n    predict_linear((sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
+                  "expr": "  (\n    predict_linear((sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\\\"$k8s_cluster_name\\\"})[1d:10m]),7 * 24 * 60 * 60) \n  )",
                   "format": "table",
                   "instant": true,
                   "intervalFactor": 1,
@@ -511,8 +443,131 @@ spec:
                 }
               ],
               "title": "Infrastructure Namespace Volumes Full in Week Based on Daily Use Rate - Current",
-              "transform": "table",
-              "type": "table-old"
+              "type": "table",
+              "options": {
+                "showHeader": true,
+                "cellHeight": "sm",
+                "footer": {
+                  "show": false,
+                  "reducer": [
+                    "sum"
+                  ],
+                  "countRows": false,
+                  "fields": ""
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "custom": {
+                    "align": null,
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "inspect": false
+                  },
+                  "mappings": [],
+                  "thresholds": {
+                    "mode": "percentage",
+                    "steps": [
+                      {
+                        "color": "red",
+                        "value": null
+                      },
+                      {
+                        "value": 80,
+                        "color": "green"
+                      }
+                    ]
+                  },
+                  "unit": "short",
+                  "decimals": 2,
+                  "displayName": "",
+                  "color": {
+                    "mode": "thresholds"
+                  }
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "Value"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Available"
+                      },
+                      {
+                        "id": "unit",
+                        "value": "bytes"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 2
+                      },
+                      {
+                        "id": "custom.cellOptions",
+                        "value": {
+                          "type": "color-background"
+                        }
+                      },
+                      {
+                        "id": "custom.align",
+                        "value": null
+                      },
+                      {
+                        "id": "thresholds",
+                        "value": {
+                          "mode": "percentage",
+                          "steps": [
+                            {
+                              "color": "rgba(50, 172, 45, 0.97)",
+                              "value": null
+                            },
+                            {
+                              "value": 80,
+                              "color": "semi-dark-red"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "persistentvolumeclaim"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "PVC"
+                      },
+                      {
+                        "id": "unit",
+                        "value": "short"
+                      },
+                      {
+                        "id": "decimals",
+                        "value": 2
+                      },
+                      {
+                        "id": "custom.align",
+                        "value": null
+                      }
+                    ]
+                  }
+                ]
+              },
+              "transformations": [
+                {
+                  "id": "merge",
+                  "options": {
+                    "reducers": []
+                  }
+                }
+              ],
+              "pluginVersion": "10.1.0"
             },
             {
               "alert": {
@@ -761,354 +816,6 @@ spec:
               }
             },
             {
-              "columns": [
-                {
-                  "$$hashKey": "object:2236",
-                  "text": "Avg",
-                  "value": "avg"
-                }
-              ],
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
-              "fontSize": "100%",
-              "gridPos": {
-                "h": 13,
-                "w": 8,
-                "x": 0,
-                "y": 16
-              },
-              "id": 39,
-              "links": [],
-              "showHeader": true,
-              "sort": {
-                "col": 0,
-                "desc": true
-              },
-              "styles": [
-                {
-                  "$$hashKey": "object:895",
-                  "alias": "Available",
-                  "align": "auto",
-                  "colorMode": "row",
-                  "colors": [
-                    "rgba(50, 172, 45, 0.97)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(245, 54, 54, 0.9)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "mappingType": 1,
-                  "pattern": "Value",
-                  "thresholds": [
-                    "0",
-                    "0"
-                  ],
-                  "type": "number",
-                  "unit": "bytes"
-                },
-                {
-                  "$$hashKey": "object:897",
-                  "alias": "PVC",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                  "decimals": 2,
-                  "mappingType": 1,
-                  "pattern": "persistentvolumeclaim",
-                  "thresholds": [],
-                  "type": "string",
-                  "unit": "short"
-                },
-                {
-                  "$$hashKey": "object:898",
-                  "alias": "",
-                  "align": "auto",
-                  "colors": [
-                    "rgba(245, 54, 54, 0.9)",
-                    "rgba(237, 129, 40, 0.89)",
-                    "rgba(50, 172, 45, 0.97)"
-                  ],
-                  "decimals": 2,
-                  "pattern": "/.*/",
-                  "thresholds": [],
-                  "type": "hidden",
-                  "unit": "short"
-                }
-              ],
-              "targets": [
-                {
-                  "datasource": {
-                    "type": "prometheus",
-                    "uid": "P1809F7CD0C75ACF3"
-                  },
-                  "editorMode": "code",
-                  "exemplar": false,
-                  "expr": "  (\n    predict_linear((sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )",
-                  "format": "table",
-                  "instant": true,
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "range": false,
-                  "refId": "A"
-                }
-              ],
-              "title": "Ping-cloud Namespace Volumes Full in Week Based on Daily Use Rate - Current",
-              "transform": "table",
-              "type": "table-old"
-            },
-            {
-              "alert": {
-                "alertRuleTags": {},
-                "conditions": [
-                  {
-                    "evaluator": {
-                      "params": [
-                        0
-                      ],
-                      "type": "gt"
-                    },
-                    "operator": {
-                      "type": "and"
-                    },
-                    "query": {
-                      "params": [
-                        "A",
-                        "1h",
-                        "now"
-                      ]
-                    },
-                    "reducer": {
-                      "params": [],
-                      "type": "avg"
-                    },
-                    "type": "query"
-                  }
-                ],
-                "executionErrorState": "alerting",
-                "for": "24h",
-                "frequency": "1h",
-                "handler": 1,
-                "name": "Ping-cloud Namespace Volumes Full in Week Based on Daily Use Rate Alert",
-                "noDataState": "ok",
-                "notifications": []
-              },
-              "aliasColors": {},
-              "bars": true,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
-              "fieldConfig": {
-                "defaults": {
-                  "links": []
-                },
-                "overrides": []
-              },
-              "fill": 10,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 16,
-                "x": 8,
-                "y": 16
-              },
-              "hiddenSeries": false,
-              "id": 40,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "rightSide": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": false,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "null as zero",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "9.3.6",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": true,
-              "steppedLine": true,
-              "targets": [
-                {
-                  "datasource": {
-                    "type": "prometheus",
-                    "uid": "P1809F7CD0C75ACF3"
-                  },
-                  "editorMode": "code",
-                  "expr": "count (\n  (\n    predict_linear((sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]),7 * 24 * 60 * 60) \n    <= \n    0 \n  )\n)",
-                  "legendFormat": "Alerts - Volumes Full in Week Based on Daily Use Rate",
-                  "range": true,
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [
-                {
-                  "$$hashKey": "object:275",
-                  "colorMode": "critical",
-                  "fill": true,
-                  "line": true,
-                  "op": "gt",
-                  "value": 1,
-                  "yaxis": "left"
-                }
-              ],
-              "timeRegions": [],
-              "title": "Ping-cloud Namespace Volumes Full in Week Based on Daily Use Rate - Alert History",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:261",
-                  "decimals": 0,
-                  "format": "short",
-                  "label": "# of Alerts",
-                  "logBase": 1,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:262",
-                  "format": "short",
-                  "logBase": 1,
-                  "show": false
-                }
-              ],
-              "yaxis": {
-                "align": false
-              }
-            },
-            {
-              "aliasColors": {},
-              "bars": false,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
-              "fieldConfig": {
-                "defaults": {
-                  "links": []
-                },
-                "overrides": []
-              },
-              "fill": 0,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 7,
-                "w": 16,
-                "x": 8,
-                "y": 22
-              },
-              "hiddenSeries": false,
-              "id": 46,
-              "legend": {
-                "alignAsTable": false,
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "rightSide": false,
-                "show": true,
-                "total": false,
-                "values": false
-              },
-              "lines": true,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "null",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "9.3.6",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": false,
-              "steppedLine": false,
-              "targets": [
-                {
-                  "datasource": {
-                    "type": "prometheus",
-                    "uid": "P1809F7CD0C75ACF3"
-                  },
-                  "editorMode": "code",
-                  "expr": "predict_linear((sum by (persistentvolumeclaim) (kubelet_volume_stats_available_bytes {k8s_cluster_name=~\"$k8s_cluster_name\"})[1d:10m]), 7 * 24 * 60 * 60)",
-                  "format": "time_series",
-                  "hide": false,
-                  "instant": false,
-                  "intervalFactor": 1,
-                  "legendFormat": "({{persistentvolumeclaim}})",
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeRegions": [],
-              "title": "Ping-cloud Namespace Volumes Full in Week Based on Daily Use Rate - Predicted Available Space History",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:413",
-                  "decimals": 0,
-                  "format": "bytes",
-                  "label": "1 Week Predicted Available Space",
-                  "logBase": 1,
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:414",
-                  "format": "bytes",
-                  "logBase": 1,
-                  "show": false
-                }
-              ],
-              "yaxis": {
-                "align": false
-              }
-            },
-            {
               "columns": [],
               "datasource": {
                 "type": "prometheus",
@@ -1118,8 +825,8 @@ spec:
               "error": false,
               "fontSize": "100%",
               "gridPos": {
-                "h": 6,
-                "w": 8,
+                "h": 9,
+                "w": 24,
                 "x": 0,
                 "y": 29
               },
@@ -1293,17 +1000,6 @@ spec:
                     "uid": "P1809F7CD0C75ACF3"
                   },
                   "editorMode": "code",
-                  "expr": "(kube_persistentvolumeclaim_info{k8s_cluster_name=~\"$k8s_cluster_name\"}) and ((max by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) / (max by (persistentvolumeclaim) (kubelet_volume_stats_capacity_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) >= ($pvc_percent_used_warning_threshold / 100))",
-                  "format": "table",
-                  "instant": true,
-                  "refId": "E"
-                },
-                {
-                  "datasource": {
-                    "type": "prometheus",
-                    "uid": "P1809F7CD0C75ACF3"
-                  },
-                  "editorMode": "code",
                   "expr": "(max by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) and ((max by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) / (max by (persistentvolumeclaim) (kubelet_volume_stats_capacity_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) >= ($pvc_percent_used_warning_threshold / 100))",
                   "format": "table",
                   "instant": true,
@@ -1347,107 +1043,6 @@ spec:
               "title": "Running PVCs Above % Used Warning Threshold Stats - Current",
               "transform": "table",
               "type": "table-old"
-            },
-            {
-              "aliasColors": {},
-              "bars": true,
-              "dashLength": 10,
-              "dashes": false,
-              "datasource": {
-                "type": "prometheus",
-                "uid": "P1809F7CD0C75ACF3"
-              },
-              "fieldConfig": {
-                "defaults": {
-                  "links": []
-                },
-                "overrides": []
-              },
-              "fill": 5,
-              "fillGradient": 0,
-              "gridPos": {
-                "h": 6,
-                "w": 16,
-                "x": 8,
-                "y": 29
-              },
-              "hiddenSeries": false,
-              "id": 41,
-              "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": false,
-                "total": false,
-                "values": false
-              },
-              "lines": false,
-              "linewidth": 1,
-              "links": [],
-              "nullPointMode": "null as zero",
-              "options": {
-                "alertThreshold": true
-              },
-              "percentage": false,
-              "pluginVersion": "9.3.6",
-              "pointradius": 2,
-              "points": false,
-              "renderer": "flot",
-              "seriesOverrides": [],
-              "spaceLength": 10,
-              "stack": true,
-              "steppedLine": true,
-              "targets": [
-                {
-                  "datasource": {
-                    "type": "prometheus",
-                    "uid": "P1809F7CD0C75ACF3"
-                  },
-                  "editorMode": "code",
-                  "expr": "(\n  ((max by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) * 0 +1)\n  and\n  (\n    (max by (persistentvolumeclaim) (kubelet_volume_stats_used_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"})) / (max by (persistentvolumeclaim) (kubelet_volume_stats_capacity_bytes{k8s_cluster_name=~\"$k8s_cluster_name\"}))\n  ) >= ($pvc_percent_used_warning_threshold / 100)\n)",
-                  "format": "time_series",
-                  "instant": false,
-                  "intervalFactor": 1,
-                  "legendFormat": "Alerts - PVC Running Above % Used Warning Threshold ({{persistentvolumeclaim}})",
-                  "range": true,
-                  "refId": "A"
-                }
-              ],
-              "thresholds": [],
-              "timeRegions": [],
-              "title": "Running PVCs Above % Used Warning Threshold - History",
-              "tooltip": {
-                "shared": true,
-                "sort": 0,
-                "value_type": "individual"
-              },
-              "type": "graph",
-              "xaxis": {
-                "mode": "time",
-                "show": true,
-                "values": []
-              },
-              "yaxes": [
-                {
-                  "$$hashKey": "object:4968",
-                  "decimals": 0,
-                  "format": "short",
-                  "label": "Total # of Alerts",
-                  "logBase": 1,
-                  "min": "0",
-                  "show": true
-                },
-                {
-                  "$$hashKey": "object:4969",
-                  "format": "short",
-                  "logBase": 1,
-                  "show": true
-                }
-              ],
-              "yaxis": {
-                "align": false
-              }
             }
           ],
           "targets": [
