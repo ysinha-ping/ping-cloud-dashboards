@@ -19,8 +19,14 @@ configMapGenerator:
   - name: os-dashboards-pa-was
     files:
       - os-dashboard-pa-was.ndjson
+  - name: os-dashboard-pf-impossible-login
+    files:
+      - os-dashboard-pf-impossible-login.ndjson
+  - name: os-dashboard-pf-threat-impossible-login
+    files:
+      - os-dashboard-pf-threat-impossible-login.ndjson
 
 generatorOptions:
- disableNameSuffixHash: true
- annotations:
-   argocd.argoproj.io/sync-options: Replace=true
+  disableNameSuffixHash: true
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
