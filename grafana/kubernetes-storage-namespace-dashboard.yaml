@@ -270,6 +270,7 @@ spec:
                 "type": "prometheus",
                 "uid": "P1809F7CD0C75ACF3"
               },
+              "description": "Shows predicted available storage space for each volume in this namespace 7 days from now based on current usage trends. Values are color-coded: GREEN indicates volumes with sufficient space remaining (above 80% threshold), ORANGE shows volumes nearing capacity (approaching 80% threshold), and RED highlights volumes that have exceeded the 80% usage threshold and require immediate attention for capacity expansion or cleanup.",
               "gridPos": {
                 "h": 14,
                 "w": 8,
@@ -293,7 +294,7 @@ spec:
                   "refId": "A"
                 }
               ],
-              "title": "Volumes Full in Week Based on Daily Use Rate - Current",
+              "title": "Volume Capacity Status - 7-Day Forecast",
               "type": "table",
               "options": {
                 "showHeader": true,
@@ -318,11 +319,15 @@ spec:
                   },
                   "mappings": [],
                   "thresholds": {
-                    "mode": "percentage",
+                    "mode": "absolute",
                     "steps": [
                       {
-                        "color": "green",
-                        "value": null
+                        "value": null,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
                       }
                     ]
                   },
@@ -365,15 +370,19 @@ spec:
                       {
                         "id": "thresholds",
                         "value": {
-                          "mode": "percentage",
+                          "mode": "absolute",
                           "steps": [
                             {
                               "color": "rgba(50, 172, 45, 0.97)",
                               "value": null
                             },
                             {
-                              "value": 80,
-                              "color": "semi-dark-red"
+                              "color": "rgba(237, 129, 40, 0.89)",
+                              "value": 0
+                            },
+                            {
+                              "color": "rgba(245, 54, 54, 0.9)",
+                              "value": 0
                             }
                           ]
                         }
