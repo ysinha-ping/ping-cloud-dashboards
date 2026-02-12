@@ -10,17 +10,21 @@ configMapGenerator:
   - name: os-dashboards-pf
     files:
       - os-dashboard-pf.ndjson
-      - os-dashboard-pf-impossible-login.ndjson
   - name: os-dashboards-pf-threat
     files:
       - os-dashboard-pf-threat.ndjson
-      - os-dashboard-pf-threat-impossible-login.ndjson
   - name: os-dashboards-pa
     files:
       - os-dashboard-pa.ndjson
   - name: os-dashboards-pa-was
     files:
       - os-dashboard-pa-was.ndjson
+  - name: os-dashboards-pf-impossible-login
+    files:
+      - os-dashboard-pf-impossible-login.ndjson
+  - name: os-dashboards-pf-threat-impossible-login
+    files:
+      - os-dashboard-pf-threat-impossible-login.ndjson
 
 generatorOptions:
  annotations:
