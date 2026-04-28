@@ -48,11 +48,11 @@ spec:
           "type": "text",
           "id": 100,
           "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
-          "transparent": false,
-          "title": "",
+          "transparent": true,
+          "title": " ",
           "options": {
             "mode": "markdown",
-            "content": "NOTE: For most ingress names, the panels below may show No data. This usually means the selected ingress simply hasn't received any HTTP traffic in the selected time window. This is expected on a cluster where not all services are actively in use."
+            "content": "NOTE: For any ingress names, if the panels below show No data, then that usually means the selected ingress simply hasn't received any HTTP traffic in the selected time window. This is expected on a cluster where not all services are actively in use."
           }
         },
         {
