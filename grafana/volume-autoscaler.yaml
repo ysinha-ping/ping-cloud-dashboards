@@ -322,7 +322,7 @@ spec:
               "expr": "volume_autoscaler_release_info{k8s_cluster_name=~\"$cluster_name\"}",
               "instant": true,
               "legendFormat": "{{app_kubernetes_io_version}}",
-              "range": true,
+              "range": false,
               "refId": "A"
             }
           ],
